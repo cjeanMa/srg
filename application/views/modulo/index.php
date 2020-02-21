@@ -40,8 +40,8 @@
 		<td><?php echo $m['horasModulo']; ?></td>
 		<td><?php echo $m['idEscuelaProfesional']; ?></td>
 		<td>
-            <a href="<?php echo site_url('modulo/edit/'.$m['idModulo']); ?>" class="btn btn-info btn-xs">Edit</a> 
-            <a href="<?php echo site_url('modulo/remove/'.$m['idModulo']); ?>" class="btn btn-danger btn-xs">Delete</a>
+            <a href="<?php echo site_url('modulo/edit/'.$m['idModulo']); ?>" class="btn btn-info btn-xs">Editar</a> 
+            <a href="<?php echo site_url('modulo/remove/'.$m['idModulo']); ?>" class="btn btn-danger btn-xs">Eliminar</a>
         </td>
     </tr>
 	<?php } ?>

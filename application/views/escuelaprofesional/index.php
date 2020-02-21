@@ -19,7 +19,10 @@
 		<th>Disponibilidad</th>
 		<th>Actions</th>
     </tr>
-	<?php foreach($escuelaprofesional as $e){ ?>
+
+	<?php
+	// var_dump($escuelaprofesional);
+	 foreach($escuelaprofesional as $e){ ?>
     <tr>
 		<td><?php echo $e['idEscuelaProfesional']; ?></td>
 		<td><a href='<?php echo base_url()."modulo/modulosByEp/".$e['idEscuelaProfesional']; ?>'><?php echo $e['nombreEscuelaProfesional']; ?></a></td>

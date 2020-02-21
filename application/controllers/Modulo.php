@@ -24,19 +24,27 @@ class Modulo extends CI_Controller{
      */
     function add()
     {   
-        if(isset($_POST) && count($_POST) > 0)     
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('nombreModulo','NombreModulo','max_length[100]|required');
+        $this->form_validation->set_rules('horasModulo','HorasModulo','integer|required');
+        
+        if($this->form_validation->run())     
         {   
             $params = array(
-				'nombreModulo' => $this->input->post('nombreModulo'),
-				'horasModulo' => $this->input->post('horasModulo'),
-				'idEscuelaProfesional' => $this->input->post('idEscuelaProfesional'),
+                'idEscuelaProfesional' => $this->input->post('idEscuelaProfesional'),
+                'nombreModulo' => $this->input->post('nombreModulo'),
+                'horasModulo' => $this->input->post('horasModulo'),
             );
             
             $modulo_id = $this->Modulo_model->add_modulo($params);
             redirect('modulo/index');
         }
         else
-        {            
+        {
+            $this->load->model('Escuelaprofesional_model');
+            $data['all_escuelaprofesional'] = $this->EscuelaProfesional_model->get_all_escuelaprofesional();
+            
             $data['_view'] = 'modulo/add';
             $this->load->view('layouts/main',$data);
         }
@@ -52,12 +60,17 @@ class Modulo extends CI_Controller{
         
         if(isset($data['modulo']['idModulo']))
         {
-            if(isset($_POST) && count($_POST) > 0)     
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('nombreModulo','NombreModulo','max_length[100]|required');
+            $this->form_validation->set_rules('horasModulo','HorasModulo','integer|required');
+        
+            if($this->form_validation->run())     
             {   
                 $params = array(
-					'nombreModulo' => $this->input->post('nombreModulo'),
-					'horasModulo' => $this->input->post('horasModulo'),
-					'idEscuelaProfesional' => $this->input->post('idEscuelaProfesional'),
+                    'idEscuelaProfesional' => $this->input->post('idEscuelaProfesional'),
+                    'nombreModulo' => $this->input->post('nombreModulo'),
+                    'horasModulo' => $this->input->post('horasModulo'),
                 );
 
                 $this->Modulo_model->update_modulo($idModulo,$params);            
@@ -65,13 +78,16 @@ class Modulo extends CI_Controller{
             }
             else
             {
+                $this->load->model('Escuelaprofesional_model');
+                $data['all_escuelaprofesional'] = $this->EscuelaProfesional_model->get_all_escuelaprofesional();
+
                 $data['_view'] = 'modulo/edit';
                 $this->load->view('layouts/main',$data);
             }
         }
         else
             show_error('The modulo you are trying to edit does not exist.');
-    } 
+    }
 
     /*
      * Deleting modulo
