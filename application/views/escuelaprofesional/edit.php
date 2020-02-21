@@ -1,5 +1,12 @@
 <?php echo form_open('escuelaprofesional/edit/'.$escuelaprofesional['idEscuelaProfesional'],array("class"=>"form-horizontal")); ?>
 
+	<div class="container">
+		<div class="row text-center">
+			<div class="col-md"><h2><b>Modificar Programa de Estudios</b></h2></div>
+		</div>
+	</div>
+
+
 	<div class="form-group">
 		<label for="nombreEscuelaProfesional" class="col-md-4 control-label">NombreEscuelaProfesional</label>
 		<div class="col-md-8">
@@ -45,7 +52,7 @@
 	
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
-			<button type="submit" class="btn btn-success">Save</button>
+			<button type="submit" class="btn btn-success">Guardar Cambios</button>
         </div>
 	</div>
 	

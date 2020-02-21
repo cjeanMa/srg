@@ -1,6 +1,11 @@
-<div class="pull-right">
-	<a href="<?php echo site_url('docente/add'); ?>" class="btn btn-success">Add</a> 
+<h2 class="text-center"><b>Lista de Docentes</b></h2>
+
+<div class="row">
+	<div class="pull-right">
+		<a href="<?php echo site_url('docente/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</a> 
+	</div>
 </div>
+<hr>
 
 <table class="table table-striped table-bordered">
     <tr>

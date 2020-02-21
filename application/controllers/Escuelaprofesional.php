@@ -32,7 +32,7 @@ class Escuelaprofesional extends CI_Controller{
 				'fecha_autorizacion' => $this->input->post('fecha_autorizacion'),
 				'res_revalidacion' => $this->input->post('res_revalidacion'),
 				'fecha_revalidacion' => $this->input->post('fecha_revalidacion'),
-				'disponibilidad' => $this->input->post('disponibilidad'),
+				'disponibilidad' => 1,
             );
             
             $escuelaprofesional_id = $this->Escuelaprofesional_model->add_escuelaprofesional($params);

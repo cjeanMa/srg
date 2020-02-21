@@ -5,6 +5,10 @@ class Docente extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Docente_model');
+        $this->load->model('Persona_model');
+        $this->load->model('Escuelaprofesional_model');
+        $this->load->model('Sexo_model');
+        $this->load->model('Discapacidad_model');
     } 
 
     /*
