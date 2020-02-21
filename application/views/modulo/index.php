@@ -1,6 +1,29 @@
-<div class="pull-right">
-	<a href="<?php echo site_url('modulo/add'); ?>" class="btn btn-success">Add</a> 
+
+<div class="row justify-content-center text-center">
+<?php
+	if (!empty($escuelaprofesional['nombreEscuelaProfesional'])) {
+		echo "<h2 class='col-md-12'><b>Lista de Modulos del programa de Estudios</b></h2>";
+		echo "<h2 class='col-md-12'><b>".$escuelaprofesional['nombreEscuelaProfesional']."</b></h2>";
+	}
+	else{
+		echo "<h2><b>Lista de Modulos</b></h2>";
+	}
+ ?>
 </div>
+
+<div class="pull-right">
+	<?php
+		if (!empty($escuelaprofesional['nombreEscuelaProfesional'])) {
+			echo "<a href='".site_url('modulo/add_modulo_by_ep/').$escuelaprofesional['idEscuelaProfesional']."' class='btn btn-success'>Agregar</a>";
+		}
+		else{
+			echo "<a href='".site_url('modulo/add')."' class='btn btn-success'>Agregar</a>";
+		}
+ 	?>
+
+	
+</div>
+<hr>
 
 <table class="table table-striped table-bordered">
     <tr>

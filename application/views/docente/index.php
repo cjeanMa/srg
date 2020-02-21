@@ -20,7 +20,7 @@
 		<td><?php echo $d['idPersona']; ?></td>
 		<td><?php echo $d['idEscuelaProfesional']; ?></td>
 		<td>
-            <a href="<?php echo site_url('docente/edit/'.$d['idDocente']); ?>" class="btn btn-info btn-xs">Edit</a> 
+            <a href="<?php echo site_url('docente/edit/'.$d['idDocente']); ?>" class="btn btn-info btn-xs"> <i class="fa fa-pencil"></i> </a> 
             <a href="<?php echo site_url('docente/remove/'.$d['idDocente']); ?>" class="btn btn-danger btn-xs">Delete</a>
         </td>
     </tr>

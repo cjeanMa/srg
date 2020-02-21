@@ -5,6 +5,7 @@ class Modulo extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Modulo_model');
+        $this->load->model('EscuelaProfesional_model');
     } 
 
     /*
@@ -88,5 +89,40 @@ class Modulo extends CI_Controller{
         else
             show_error('The modulo you are trying to delete does not exist.');
     }
+
+    /*
+     * Mostrar la lista de modulos correspondientes al programa de estusio elegido
+     */
+    function modulosByEp($idEscuelaProfesional){
+        $data['escuelaprofesional'] = $this->EscuelaProfesional_model->get_escuelaprofesional($idEscuelaProfesional);
+        $data['modulo'] = $this->Modulo_model->get_all_modulo_by_ep($idEscuelaProfesional);
+        
+        $data['_view'] = 'modulo/index';
+        $this->load->view('layouts/main',$data);
+    }
+
+    /*
+     * Adding a new modulo
+     */
+    function add_modulo_by_ep($idEscuelaProfesional)
+    {   
+        if(isset($_POST) && count($_POST) > 0)     
+        {   
+            $params = array(
+				'nombreModulo' => $this->input->post('nombreModulo'),
+				'horasModulo' => $this->input->post('horasModulo'),
+				'idEscuelaProfesional' => $this->input->post('idEscuelaProfesional'),
+            );
+            
+            $modulo_id = $this->Modulo_model->add_modulo($params);
+            redirect('modulo/index');
+        }
+        else
+        {   $data['escuelaprofesional'] = $this->EscuelaProfesional_model->get_escuelaprofesional($idEscuelaProfesional);
+            $data['_view'] = 'modulo/add';
+            $this->load->view('layouts/main',$data);
+        }
+    }  
+
     
 }

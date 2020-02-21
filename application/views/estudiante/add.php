@@ -1,7 +1,9 @@
 <?php echo form_open('estudiante/add',array("class"=>"form-horizontal")); ?>
 
 <div class="container">
-		
+		<div class="row text-center">
+			<div class="col-md"><h2><b>Nuevo Estudiante</b></h2></div>
+		</div>
 		<div class="row text-center">
 			<div class="col-md">
 			<h3><u>DATOS PERSONALES</u></h3>

@@ -22,7 +22,7 @@
 	<?php foreach($escuelaprofesional as $e){ ?>
     <tr>
 		<td><?php echo $e['idEscuelaProfesional']; ?></td>
-		<td><?php echo $e['nombreEscuelaProfesional']; ?></td>
+		<td><a href='<?php echo base_url()."modulo/modulosByEp/".$e['idEscuelaProfesional']; ?>'><?php echo $e['nombreEscuelaProfesional']; ?></a></td>
 		<td><?php echo $e['fechaCreacion']; ?></td>
 		<td><?php echo $e['res_autorizacion']; ?></td>
 		<td><?php echo $e['fecha_autorizacion']; ?></td>

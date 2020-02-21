@@ -53,4 +53,13 @@ class Modulo_model extends CI_Model
     {
         return $this->db->delete('modulo',array('idModulo'=>$idModulo));
     }
+
+    /*
+     * Get modulos por escuela profesional
+     */
+    function get_all_modulo_by_ep($idEscuelaProfesional)
+    {
+        $this->db->order_by('idModulo', 'desc');
+        return $this->db->get_where('modulo', array('idEscuelaProfesional' => $idEscuelaProfesional))->result_array();
+    }
 }

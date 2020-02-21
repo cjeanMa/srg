@@ -1,6 +1,9 @@
 <?php
  
 class Escuelaprofesional extends CI_Controller{
+
+    public $disponibilidad = array("0"=>"deshabilitado","1"=>"habilitado");
+
     function __construct()
     {
         parent::__construct();
