@@ -27,6 +27,15 @@ class Escuelaprofesional_model extends CI_Model
         $this->db->order_by('idEscuelaProfesional', 'desc');
         return $this->db->get('escuelaprofesional')->result_array();
     }
+
+    /*
+     * Get id, nombre from escuelaprofesional
+     */
+    function get_basic_escuelaprofesional()
+    {
+        $this->db->select('idEscuelaProfesional, nombreEscuelaProfesional');
+        return $this->db->get('escuelaprofesional')->result_array();
+    }
         
     /*
      * function to add new escuelaprofesional

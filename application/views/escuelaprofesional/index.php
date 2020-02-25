@@ -1,37 +1,46 @@
-<h2 class="text-center"><b>Lista de Programas de Estudio</b></h2>
+<div class="row">
+	<div class="col-md text-center">
+	<h2><b>Lista de Programas de Estudio</b></h2>
+	</div>
+</div> 
 
 <div class="row">
 	<div class="col-md pull-right">
-	<a href="<?php echo site_url('escuelaprofesional/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</a> 
+		<a href="<?php echo site_url();?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Regresar</a>
+		<a href="<?php echo site_url('escuelaprofesional/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</a> 
 	</div>
 </div>
 <hr>
 
 <table class="table table-striped table-bordered">
-    <tr>
-		<th>IdEscuelaProfesional</th>
-		<th>NombreEscuelaProfesional</th>
-		<th>FechaCreacion</th>
-		<th>Res Autorizacion</th>
-		<th>Fecha Autorizacion</th>
-		<th>Res Revalidacion</th>
-		<th>Fecha Revalidacion</th>
-		<th>Disponibilidad</th>
-		<th>Actions</th>
+    <tr class="text-center">
+		<th>Programa de Estudios</th>
+		<th>Fecha de Creacion</th>
+		<th>Res. de Autorizacion</th>
+		<th>Fecha de Autorizacion</th>
+		<th>Res. de Revalidacion</th>
+		<th>Fecha de Revalidacion</th>
+		<th>Estado</th>
+		<th>Acciones</th>
     </tr>
 	<?php foreach($escuelaprofesional as $e){ ?>
     <tr>
-		<td><?php echo $e['idEscuelaProfesional']; ?></td>
 		<td><a href='<?php echo base_url()."modulo/modulosByEp/".$e['idEscuelaProfesional']; ?>'><?php echo $e['nombreEscuelaProfesional']; ?></a></td>
 		<td><?php echo $e['fechaCreacion']; ?></td>
 		<td><?php echo $e['res_autorizacion']; ?></td>
 		<td><?php echo $e['fecha_autorizacion']; ?></td>
 		<td><?php echo $e['res_revalidacion']; ?></td>
 		<td><?php echo $e['fecha_revalidacion']; ?></td>
-		<td><?php echo $e['disponibilidad']; ?></td>
+		<td><?php 
+			for($i = 0; $i<sizeof($this->disponibilidad);$i++){
+				if($e['disponibilidad']==$i){
+					echo $this->disponibilidad[$i];
+				}
+			}	
+ 			?></td>
 		<td>
-            <a href="<?php echo site_url('escuelaprofesional/edit/'.$e['idEscuelaProfesional']); ?>" class="btn btn-warning btn-xs"><i class="fa fa-pen"></i> </a> 
-            <a href="<?php echo site_url('escuelaprofesional/remove/'.$e['idEscuelaProfesional']); ?>" class="btn btn-danger btn-xs"><i class="fa fa-window-close"></i> </a>
+            <a href="<?php echo site_url('escuelaprofesional/edit/'.$e['idEscuelaProfesional']); ?>"><i class="fa fa-edit"></i> </a> 
+            <a href="<?php echo site_url('escuelaprofesional/remove/'.$e['idEscuelaProfesional']); ?>"><i class="fa fa-trash"></i> </a>
         </td>
     </tr>
 	<?php } ?>

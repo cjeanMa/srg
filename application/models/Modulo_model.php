@@ -27,6 +27,17 @@ class Modulo_model extends CI_Model
         $this->db->order_by('idModulo', 'desc');
         return $this->db->get('modulo')->result_array();
     }
+    /*
+     * Get all modulo
+     */
+    function get_all_modulo_ep()
+    {
+        $this->db->select('m.idModulo, m.nombreModulo, m.horasModulo, m.idEscuelaProfesional, ep.nombreEscuelaProfesional');
+        $this->db->from('modulo m');
+        $this->db->join('escuelaProfesional ep', 'm.idEscuelaProfesional = ep.idEscuelaProfesional', 'left');
+        $this->db->order_by('m.idModulo','DESC');
+        return $this->db->get()->result_array();
+    }
         
     /*
      * function to add new modulo
@@ -59,7 +70,24 @@ class Modulo_model extends CI_Model
      */
     function get_all_modulo_by_ep($idEscuelaProfesional)
     {
+        $this->db->select('m.idModulo, m.nombreModulo, m.horasModulo, m.idEscuelaProfesional, ep.nombreEscuelaProfesional');
+        $this->db->from('modulo m');
+        $this->db->join('escuelaProfesional ep', 'm.idEscuelaProfesional = ep.idEscuelaProfesional', 'left');
+        $this->db->where('m.idEscuelaProfesional', $idEscuelaProfesional);
         $this->db->order_by('idModulo', 'desc');
-        return $this->db->get_where('modulo', array('idEscuelaProfesional' => $idEscuelaProfesional))->result_array();
+        return $this->db->get()->result_array();
     }
+
+    /*
+     * GEt modulo con campos de escuela profesional incluidos
+     */
+
+     function get_modulo_ep($idModulo){
+         //$this->db->select('*');
+         $this->db->from('modulo m');
+         $this->db->join('escuelaprofesional ep','m.idEscuelaProfesional = ep.idEscuelaProfesional','left');
+         $this->db->where('m.idModulo', $idModulo);
+         $this->db->order_by('m.idModulo','DESC');
+         return $this->db->get()->row_array();
+     }
 }

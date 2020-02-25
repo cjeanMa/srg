@@ -12,13 +12,18 @@
 </div>
 
 <div class="pull-right">
+	
 	<?php
 		if (!empty($escuelaprofesional['nombreEscuelaProfesional'])) {
-			echo "<a href='".site_url('modulo/add_modulo_by_ep/').$escuelaprofesional['idEscuelaProfesional']."' class='btn btn-success'>Agregar</a>";
-		}
+	?>
+			<a href="<?php echo site_url('escuelaprofesional')?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Atras</a>
+			<a href="<?php echo site_url('modulo/add_modulo_by_ep/').$escuelaprofesional['idEscuelaProfesional'];?>" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</a>
+	<?php	}
 		else{
-			echo "<a href='".site_url('modulo/add')."' class='btn btn-success'>Agregar</a>";
-		}
+	?>
+			<a href="<?php echo site_url()?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i>Atras</a>
+			<a href=" <?php echo site_url('modulo/add');?>" class="btn btn-success"><i class="fa fa-plus"></i>Agregar</a>
+	<?php }
  	?>
 
 	
@@ -26,22 +31,25 @@
 <hr>
 
 <table class="table table-striped table-bordered">
-    <tr>
-		<th>IdModulo</th>
-		<th>NombreModulo</th>
-		<th>HorasModulo</th>
-		<th>IdEscuelaProfesional</th>
-		<th>Actions</th>
+    <tr class="text-center">
+		<th>Nombre del Modulo</th>
+		<th>Horas por Modulo</th>
+		<th>Programa de Estudios</th>
+		<th>Acciones</th>
     </tr>
 	<?php foreach($modulo as $m){ ?>
     <tr>
-		<td><?php echo $m['idModulo']; ?></td>
-		<td><?php echo $m['nombreModulo']; ?></td>
+		<td><a href="<?php if(!empty($escuelaprofesional['idEscuelaProfesional'])){
+			echo site_url('unidaddidactica/unidades_by_modulo/').$m['idModulo']."/".$escuelaprofesional['idEscuelaProfesional']; 
+		} else {
+			echo site_url('unidaddidactica/unidades_by_modulo/').$m['idModulo']."/0";}
+		?>">
+		<?php echo $m['nombreModulo']; ?></a></td>
 		<td><?php echo $m['horasModulo']; ?></td>
-		<td><?php echo $m['idEscuelaProfesional']; ?></td>
-		<td>
-            <a href="<?php echo site_url('modulo/edit/'.$m['idModulo']); ?>" class="btn btn-info btn-xs">Edit</a> 
-            <a href="<?php echo site_url('modulo/remove/'.$m['idModulo']); ?>" class="btn btn-danger btn-xs">Delete</a>
+		<td><?php echo $m['nombreEscuelaProfesional'];?></td>
+		<td class="text-center">
+            <a href="<?php echo site_url('modulo/edit/'.$m['idModulo']); ?>"><i class="fa fa-edit" style="color:orange"></i></a> 
+            <a href="<?php echo site_url('modulo/remove/'.$m['idModulo']); ?>"><i class="fa fa-trash" style="color:darkred"></i></a>
         </td>
     </tr>
 	<?php } ?>
