@@ -13,7 +13,6 @@
 </div>
 	
 <?php echo form_open('modulo/edit/'.$modulo['idModulo'],array("class"=>"form-horizontal")); ?>
-
 <div class="container">
 
 	<div class="row form-group">

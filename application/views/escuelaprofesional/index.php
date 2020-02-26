@@ -23,7 +23,10 @@
 		<th>Estado</th>
 		<th>Acciones</th>
     </tr>
-	<?php foreach($escuelaprofesional as $e){ ?>
+
+	<?php
+	// var_dump($escuelaprofesional);
+	 foreach($escuelaprofesional as $e){ ?>
     <tr>
 		<td><a href='<?php echo base_url()."modulo/modulosByEp/".$e['idEscuelaProfesional']; ?>'><?php echo $e['nombreEscuelaProfesional']; ?></a></td>
 		<td><?php echo $e['fechaCreacion']; ?></td>

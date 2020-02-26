@@ -45,6 +45,7 @@
 		<td><?php echo $u['idSemestre']; ?></td>
 		<td><?php echo $u['idModulo']; ?></td>
 		<td class="text-center">
+			<?php //if()?>
             <a href="<?php echo site_url('unidaddidactica/edit/'.$u['idUnidadDidactica']); ?>"><i class="fa fa-edit" style="color:orange;"></i> </a> 
             <a href="<?php echo site_url('unidaddidactica/remove/'.$u['idUnidadDidactica']); ?>"><i class="fa fa-trash" style="color:darkred;"></i></a>
         </td>
