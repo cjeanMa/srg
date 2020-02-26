@@ -5,6 +5,8 @@ class Persona extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Persona_model');
+        $this->load->model('Discapacidad_model');
+        $this->load->model('Sexo_model');
     } 
 
     /*
@@ -41,7 +43,9 @@ class Persona extends CI_Controller{
             redirect('persona/index');
         }
         else
-        {            
+        {
+            $data['all_discapacidad'] = $this->Discapacidad_model->get_all_discapacidad();
+            $data['all_sexo'] = $this->Sexo_model->get_all_sexo();            
             $data['_view'] = 'persona/add';
             $this->load->view('layouts/main',$data);
         }

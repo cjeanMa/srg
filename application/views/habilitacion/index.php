@@ -1,20 +1,24 @@
-<div class="pull-right">
-	<a href="<?php echo site_url('habilitacion/add'); ?>" class="btn btn-success">Add</a> 
-</div>
+<h1 class="h3 mb-4 text-gray-800">Permiso de Usuario</h1>
 
-<table class="table table-striped table-bordered">
-    <tr>
-		<th>IdHabilitacion</th>
-		<th>Descripcion</th>
-		<th>Actions</th>
+<div class="pull-right">
+	<a href="<?php echo site_url('habilitacion/add'); ?>" class="btn btn-success">Agregar</a> 
+</div>
+<table class="table  table-striped table-bordered">
+    <tr class="bg-gradient-primary text-white text-center">
+		<!-- <th>IdHabilitacion</th> -->
+		<th>Descripción</th>
+		<th>Operación</th>
     </tr>
-	<?php foreach($habilitacion as $h){ ?>
+
+	<?php 
+	// var_dump($habilitacion);
+	foreach($habilitacion as $h){ ?>
     <tr>
-		<td><?php echo $h['idHabilitacion']; ?></td>
+		<!-- <td><?php echo $h['idHabilitacion']; ?></td> -->
 		<td><?php echo $h['descripcion']; ?></td>
-		<td>
-            <a href="<?php echo site_url('habilitacion/edit/'.$h['idHabilitacion']); ?>" class="btn btn-info btn-xs">Edit</a> 
-            <a href="<?php echo site_url('habilitacion/remove/'.$h['idHabilitacion']); ?>" class="btn btn-danger btn-xs">Delete</a>
+		<td class="text-center">
+            <a href="<?php echo site_url('habilitacion/edit/'.$h['idHabilitacion']); ?>" class="btn btn-info btn-xs">Editar</a> 
+            <a href="<?php echo site_url('habilitacion/remove/'.$h['idHabilitacion']); ?>" class="btn btn-danger btn-xs">Borrar</a>
         </td>
     </tr>
 	<?php } ?>
