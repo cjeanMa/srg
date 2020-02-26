@@ -13,8 +13,7 @@ class Modulo extends CI_Controller{
      */
     function index()
     {
-        $data['modulo'] = $this->Modulo_model->get_all_modulo();
-        
+        $data['modulo'] = $this->Modulo_model->get_all_modulo_ep();
         $data['_view'] = 'modulo/index';
         $this->load->view('layouts/main',$data);
     }
@@ -41,10 +40,8 @@ class Modulo extends CI_Controller{
             redirect('modulo/index');
         }
         else
-        {
-            $this->load->model('Escuelaprofesional_model');
-            $data['all_escuelaprofesional'] = $this->EscuelaProfesional_model->get_all_escuelaprofesional();
-            
+        {   
+            $data['escuelaProfesional'] = $this->EscuelaProfesional_model->get_all_escuelaprofesional();
             $data['_view'] = 'modulo/add';
             $this->load->view('layouts/main',$data);
         }
@@ -56,7 +53,7 @@ class Modulo extends CI_Controller{
     function edit($idModulo)
     {   
         // check if the modulo exists before trying to edit it
-        $data['modulo'] = $this->Modulo_model->get_modulo($idModulo);
+        $data['modulo'] = $this->Modulo_model->get_modulo_ep($idModulo);
         
         if(isset($data['modulo']['idModulo']))
         {
@@ -131,10 +128,10 @@ class Modulo extends CI_Controller{
             );
             
             $modulo_id = $this->Modulo_model->add_modulo($params);
-            redirect('modulo/index');
+            redirect('modulo/modulosByEp/'.$idEscuelaProfesional);
         }
         else
-        {   $data['escuelaprofesional'] = $this->EscuelaProfesional_model->get_escuelaprofesional($idEscuelaProfesional);
+        {   $data['only_escuelaProfesional'] = $this->EscuelaProfesional_model->get_escuelaprofesional($idEscuelaProfesional);
             $data['_view'] = 'modulo/add';
             $this->load->view('layouts/main',$data);
         }

@@ -29,6 +29,17 @@ class Unidaddidactica_model extends CI_Model
     }
         
     /*
+     * Get unidaddidactica con el nombre del modulo para el formulario de editar
+     */
+    function get_unidaddidactica_modulo($idUnidadDidactica)
+    {
+        $this->db->from('unidaddidactica ud');
+        $this->db->join('modulo m','ud.idModulo = m.idModulo','left');
+        $this->db->where('ud.idUnidadDidactica',$idUnidadDidactica);
+        return $this->db->get()->row_array();
+    }
+
+    /*
      * function to add new unidaddidactica
      */
     function add_unidaddidactica($params)
@@ -52,5 +63,15 @@ class Unidaddidactica_model extends CI_Model
     function delete_unidaddidactica($idUnidadDidactica)
     {
         return $this->db->delete('unidaddidactica',array('idUnidadDidactica'=>$idUnidadDidactica));
+    }
+
+     /*
+     * Unidades didacticas x Modulo
+     */
+    function get_unidadesdidacticas_by_modulo($idModulo)
+    {
+        $condicional = array('idModulo'=>$idModulo);
+        $this->db->order_by('idUnidadDidactica', 'desc');
+        return $this->db->get_where('unidaddidactica',$condicional)->result_array();
     }
 }

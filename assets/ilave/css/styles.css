@@ -1,0 +1,20 @@
+i.gt-icon{
+    color:rgba(48, 48, 59, 0.781);
+    padding: 10px;
+}
+
+.little-box {
+    border-radius: 10px;
+    padding: 50px;
+    height: 150px;
+}
+/*
+#great-box .little-box:nth-child(1) {
+    background: #3F51B5;
+}
+#great-box .little-box:nth-child(2) {
+    background: #C62828;
+}
+#great-box .little-box:nth-child(3) {
+    background: #4CAF50;
+}*/

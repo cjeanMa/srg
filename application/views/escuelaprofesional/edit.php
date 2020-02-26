@@ -1,9 +1,15 @@
+	<div class="container">
+	<div class="row text-center">
+		<div class="col-md"><h2><b>Actualizar Programa de Estudios</b></h2></div>
+	</div>
+	<div class="row push-right">
+		<a href="<?php echo site_url('escuelaprofesional');?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Regresar</a>
+	</div>
+	</div>
+	<hr>
 <?php echo form_open('escuelaprofesional/edit/'.$escuelaprofesional['idEscuelaProfesional'],array("class"=>"form-horizontal")); ?>
 
 	<div class="container">
-		<div class="row text-center">
-			<div class="col-md"><h2><b>Modificar Programa de Estudios</b></h2></div>
-		</div>
 
 		<div class="row form-group">
 		<div class="col-md-9">

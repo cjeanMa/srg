@@ -1,4 +1,3 @@
-<?php echo form_open('escuelaprofesional/add',array("class"=>"form-horizontal")); ?>
 <div class="container">
 	<div class="row text-center">
 		<div class="col-md">
@@ -6,6 +5,16 @@
 		</div>
 	</div>
 
+	<div class="row">
+		<div class="col-md">
+			<a href="<?php echo site_url('escuelaprofesional'); ?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i>Atras</a>
+		</div>
+	</div>
+</div>
+<hr>
+
+<?php echo form_open('escuelaprofesional/add',array("class"=>"form-horizontal")); ?>
+<div class="container">
 	<div class="row form-group">
 		<div class="col-md-9">
 			<label for="nombreEscuelaProfesional" class="control-label">Nombre:</label>
