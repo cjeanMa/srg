@@ -25,8 +25,6 @@
 			<a href=" <?php echo site_url('modulo/add');?>" class="btn btn-success"><i class="fa fa-plus"></i>Agregar</a>
 	<?php }
  	?>
-
-	
 </div>
 <hr>
 
@@ -48,7 +46,12 @@
 		<td><?php echo $m['horasModulo']; ?></td>
 		<td><?php echo $m['nombreEscuelaProfesional'];?></td>
 		<td class="text-center">
-            <a href="<?php echo site_url('modulo/edit/'.$m['idModulo']); ?>"><i class="fa fa-edit" style="color:orange"></i></a> 
+			<?php if(!empty($escuelaprofesional['idEscuelaProfesional'])){?>
+			<a href="<?php echo site_url('mCapacidade/mCapacidadeByModulo/'.$m['idModulo']."/".$escuelaprofesional['idEscuelaProfesional']);?>"><i class="fa fa-book" style="color:green;"></i></a>
+			<?php } else {?>
+			<a href="<?php echo site_url('mCapacidade/mCapacidadeByModulo/'.$m['idModulo']."/0");?>"><i class="fa fa-book" style="color:green;"></i></a>
+			<?php }?>
+			<a href="<?php echo site_url('modulo/edit/'.$m['idModulo']); ?>"><i class="fa fa-edit" style="color:orange"></i></a> 
             <a href="<?php echo site_url('modulo/remove/'.$m['idModulo']); ?>"><i class="fa fa-trash" style="color:darkred"></i></a>
         </td>
     </tr>

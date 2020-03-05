@@ -53,4 +53,14 @@ class Mcapacidade_model extends CI_Model
     {
         return $this->db->delete('mcapacidades',array('idMcapacidades'=>$idMcapacidades));
     }
+
+    /*
+     * Get mcapacidades por modulo
+     */
+    function get_mcapacidades_by_modulo($idmodulo)
+    {
+        $this->db->order_by('idMcapacidades', 'desc');
+        $this->db->where('idModulo', $idmodulo);
+        return $this->db->get('mcapacidades')->result_array();
+    }
 }

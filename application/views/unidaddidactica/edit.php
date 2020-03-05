@@ -7,7 +7,7 @@
 </div>
 <div class="pull-right">
 	<div class="col-md">
-		<a href="<?php echo site_url('unidaddidactica');?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Regresar</a>
+		<a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Regresar</a>
 	</div>
 </div>
 <hr>

@@ -51,7 +51,7 @@ class Unidaddidactica extends CI_Controller{
     /*
      * Editing a unidaddidactica
      */
-    function edit($idUnidadDidactica)
+    function edit($idUnidadDidactica, $idModulo, $idEscuelaProfesional)
     {   
         // check if the unidaddidactica exists before trying to edit it
         $data['unidaddidactica'] = $this->Unidaddidactica_model->get_unidaddidactica_modulo($idUnidadDidactica);
@@ -81,7 +81,7 @@ class Unidaddidactica extends CI_Controller{
         else
             show_error('The unidaddidactica you are trying to edit does not exist.');
     } 
-
+    
     /*
      * Deleting unidaddidactica
      */

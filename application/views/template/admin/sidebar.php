@@ -130,8 +130,10 @@
         <div id="optProgramas" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Opciones</h6>
-            <a class="collapse-item" href="<?php echo base_url();?>escuelaprofesional">Lista Programas</a>
-            <a class="collapse-item" href="<?php echo base_url();?>escuelaprofesional/add">Nuevo Programa</a>
+            <a class="collapse-item" href="<?php echo base_url();?>escuelaprofesional">Lista de Programas</a>
+            <a class="collapse-item" href="<?php echo base_url();?>modulo">Lista de Modulos</a>
+            <a class="collapse-item" href="<?php echo base_url();?>unidaddidactica">Lista de Uni. Didacticas</a>
+            <a class="collapse-item" href="<?php echo base_url();?>mCapacidade">Lista de Cap. Modulares</a>
         </div>
       </li>
 
