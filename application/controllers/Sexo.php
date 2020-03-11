@@ -82,7 +82,7 @@ class Sexo extends CI_Controller{
         if(isset($sexo['idSexo']))
         {
             $this->Sexo_model->delete_sexo($idSexo);
-            redirect('sexo/index');
+            redirect('dashboard/administrator');
         }
         else
             show_error('The sexo you are trying to delete does not exist.');

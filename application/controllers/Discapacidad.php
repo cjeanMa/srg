@@ -80,7 +80,7 @@ class Discapacidad extends CI_Controller{
         if(isset($discapacidad['idDiscapacidad']))
         {
             $this->Discapacidad_model->delete_discapacidad($idDiscapacidad);
-            redirect('discapacidad/index');
+            redirect('dashboard/administrator');
         }
         else
             show_error('The discapacidad you are trying to delete does not exist.');

@@ -18,3 +18,24 @@ i.gt-icon{
 #great-box .little-box:nth-child(3) {
     background: #4CAF50;
 }*/
+
+.box-black{
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 0px;
+}
+.box-black h4{
+    box-sizing: content-box;
+    background-color: darkslategray;
+    width: 100%;
+    color: white;
+    text-indent: 30px;
+}
+
+.fa-edit{
+    color:  orange;
+}
+.fa-trash{
+    color: darkred;
+}

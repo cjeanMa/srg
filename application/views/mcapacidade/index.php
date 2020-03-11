@@ -45,13 +45,13 @@
 		<td class="text-center">
 			<?php if (!empty($modulo['idModulo'])){
 				if($escuelaProfesional['idEscuelaProfesional'] != 0){?>
-					<a href="<?php echo site_url('mcapacidade/editByModulo/'.$m['idMcapacidades']."/".$modulo['idModulo']."/".$escuelaProfesional['idEscuelaProfesional']); ?>"><i class="fa fa-edit" style="color:orange;"></i> </a>					
+					<a href="<?php echo site_url('mcapacidade/editByModulo/'.$m['idMcapacidades']."/".$modulo['idModulo']."/".$escuelaProfesional['idEscuelaProfesional']); ?>"><i class="fa fa-edit"></i> </a>					
 				<?php }else{ ?>
-					<a href="<?php echo site_url('mcapacidade/editByModulo/'.$m['idMcapacidades']."/".$modulo['idModulo']."/0"); ?>"><i class="fa fa-edit" style="color:orange;"></i> </a>  
+					<a href="<?php echo site_url('mcapacidade/editByModulo/'.$m['idMcapacidades']."/".$modulo['idModulo']."/0"); ?>"><i class="fa fa-edit"></i> </a>  
 			<?php }} else {?>
-				<a href="<?php echo site_url('mcapacidade/edit/'.$m['idMcapacidades']); ?>"><i class="fa fa-edit" style="color:orange;"></i> </a> 
+				<a href="<?php echo site_url('mcapacidade/edit/'.$m['idMcapacidades']); ?>"><i class="fa fa-edit"></i> </a> 
 			<?php }?>
-            <a href="<?php echo site_url('mcapacidade/remove/'.$m['idMcapacidades']); ?>"><i class="fa fa-trash" style="color:darkred;"></i> </a>
+            <a href="<?php echo site_url('mcapacidade/remove/'.$m['idMcapacidades']); ?>"><i class="fa fa-trash"></i> </a>
         </td>
     </tr>
 	<?php } ?>

@@ -51,8 +51,8 @@
 			<?php } else {?>
 			<a href="<?php echo site_url('mCapacidade/mCapacidadeByModulo/'.$m['idModulo']."/0");?>"><i class="fa fa-book" style="color:green;"></i></a>
 			<?php }?>
-			<a href="<?php echo site_url('modulo/edit/'.$m['idModulo']); ?>"><i class="fa fa-edit" style="color:orange"></i></a> 
-            <a href="<?php echo site_url('modulo/remove/'.$m['idModulo']); ?>"><i class="fa fa-trash" style="color:darkred"></i></a>
+			<a href="<?php echo site_url('modulo/edit/'.$m['idModulo']); ?>"><i class="fa fa-edit"></i></a> 
+            <a href="<?php echo site_url('modulo/remove/'.$m['idModulo']); ?>"><i class="fa fa-trash"></i></a>
         </td>
     </tr>
 	<?php } ?>

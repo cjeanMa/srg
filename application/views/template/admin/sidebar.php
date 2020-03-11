@@ -151,6 +151,12 @@
       </li>
 
       <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('dashboard/administrator');?>">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Otros</span></a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" href="reportes">
           <i class="fas fa-fw fa-table"></i>
           <span>Reportes</span></a>

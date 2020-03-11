@@ -40,7 +40,6 @@ class Semestreacademico extends CI_Controller{
             $this->load->view('layouts/main',$data);
         }
     }  
-
     /*
      * Editing a semestreacademico
      */
@@ -82,7 +81,8 @@ class Semestreacademico extends CI_Controller{
         if(isset($semestreacademico['idSemestreAcademico']))
         {
             $this->Semestreacademico_model->delete_semestreacademico($idSemestreAcademico);
-            redirect('semestreacademico/index');
+            //modifique la redireccion ya se administrara desde alli
+            redirect('dashboard/administrator');
         }
         else
             show_error('The semestreacademico you are trying to delete does not exist.');

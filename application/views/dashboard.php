@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md text-center">
-			<img src="<?php echo site_url('assets/ilave/img/logo.png');?>" alt="IESTP-ILAVE" style="width:40%; ";>
+			<img src="<?php echo site_url('assets/ilave/img/logo.png');?>" alt="IESTP-ILAVE" style="width:35%; ";>
 		</div>
 	</div>
 	<div id="great-box" class="row text-center">

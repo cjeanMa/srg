@@ -58,7 +58,9 @@
 	</div>
   <!-- End of Page Wrapper -->
   <?php
-      $this->load->view('template/js');
+	  $this->load->view('template/js');
+	  //condidional para cargar los js propios si es que fueran necesarios
+	 
       ?>
 	</body>
 

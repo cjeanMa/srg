@@ -84,7 +84,7 @@ class Semestre extends CI_Controller{
         if(isset($semestre['idSemestre']))
         {
             $this->Semestre_model->delete_semestre($idSemestre);
-            redirect('semestre/index');
+            redirect('dashboard/administrator');
         }
         else
             show_error('The semestre you are trying to delete does not exist.');
