@@ -16,7 +16,6 @@
 				<label for="dni">DNI:</label>
 				<input id="dni" type="text" class="form-control" name = "dni" placeholder ="Documento de Identidad" maxlength="8">
 			</div>
-		
 		</div>
 		<div class="row form-group">
 				<div class="col-md">

@@ -35,6 +35,7 @@ class Persona_model extends CI_Model
     {
         $this->db->insert('persona',$params);
         return $this->db->insert_id();
+        // return $temp;
     }
     
     /*

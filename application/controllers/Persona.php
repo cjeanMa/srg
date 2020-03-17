@@ -28,7 +28,8 @@ class Persona extends CI_Controller{
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
-				'apellidoPaterno' => $this->input->post('apellidoPaterno'),
+				'idPersona' => $this->input->post('dni'),
+                'apellidoPaterno' => $this->input->post('apellidoPaterno'),
 				'apellidoMaterno' => $this->input->post('apellidoMaterno'),
 				'nombres' => $this->input->post('nombres'),
 				'idSexo' => $this->input->post('idSexo'),

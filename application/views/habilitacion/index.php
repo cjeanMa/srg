@@ -6,7 +6,7 @@
 <table class="table  table-striped table-bordered">
     <tr class="bg-gradient-primary text-white text-center">
 		<!-- <th>IdHabilitacion</th> -->
-		<th>Descripción</th>
+		<th>Nombre</th>
 		<th>Operación</th>
     </tr>
 
@@ -15,7 +15,7 @@
 	foreach($habilitacion as $h){ ?>
     <tr>
 		<!-- <td><?php echo $h['idHabilitacion']; ?></td> -->
-		<td><?php echo $h['descripcion']; ?></td>
+		<td><?php echo $h['nombreHabilitacion']; ?></td>
 		<td class="text-center">
             <a href="<?php echo site_url('habilitacion/edit/'.$h['idHabilitacion']); ?>" class="btn btn-info btn-xs">Editar</a> 
             <a href="<?php echo site_url('habilitacion/remove/'.$h['idHabilitacion']); ?>" class="btn btn-danger btn-xs">Borrar</a>

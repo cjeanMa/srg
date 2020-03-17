@@ -27,6 +27,7 @@ class Habilitacion extends CI_Controller{
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
+                'nombreHabilitacion' => $this->input->post('nombreHabilitacion'),
 				'descripcion' => $this->input->post('descripcion'),
             );
             
@@ -53,6 +54,7 @@ class Habilitacion extends CI_Controller{
             if(isset($_POST) && count($_POST) > 0)     
             {   
                 $params = array(
+                    'nombreHabilitacion' => $this->input->post('nombreHabilitacion'),
 					'descripcion' => $this->input->post('descripcion'),
                 );
 
