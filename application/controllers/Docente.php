@@ -16,7 +16,7 @@ class Docente extends CI_Controller{
      */
     function index()
     {
-        $data['docente'] = $this->Docente_model->get_all_docente();
+        $data['docente'] = $this->Docente_model->get_all_docente_persona();
         
         $data['_view'] = 'docente/index';
         $this->load->view('layouts/main',$data);
@@ -29,16 +29,39 @@ class Docente extends CI_Controller{
     {   
         if(isset($_POST) && count($_POST) > 0)     
         {   
-            $params = array(
-				'idPersona' => $this->input->post('idPersona'),
-				'idEscuelaProfesional' => $this->input->post('idEscuelaProfesional'),
+            $params_tutor = array(
+				'idPersona' => $this->input->post('dni'),
+				'idEscuelaProfesional' => $this->input->post('escuela_tecnica'),
+            );
+
+            $params_person = array(
+                'idPersona' => $this->input->post('dni'),
+                'apellidoPaterno' => strtolower($this->input->post('apellidoPaterno')),
+				'apellidoMaterno' => strtolower($this->input->post('apellidoMaterno')),
+				'nombres' => strtolower($this->input->post('nombres')),
+				'idSexo' => $this->input->post('sexo'),
+				'fechaNacimiento' => $this->input->post('fechaNacimiento'),
+				'direccion' => $this->input->post('direccion'),
+				'email' => $this->input->post('email'),
+				'numCelular' => $this->input->post('numCelular'),
+				'idDiscapacidad' => $this->input->post('discapacidad'),
             );
             
-            $docente_id = $this->Docente_model->add_docente($params);
+            if($this->Persona_model->get_persona($params_person['idPersona'])!=null){
+                $this->Persona_model->update_persona($params_person['idPersona'],$params_person);
+            }
+            else{   
+                $this->Persona_model->add_persona($params_person);
+            }
+            $docente_id = $this->Docente_model->add_docente($params_tutor);
             redirect('docente/index');
         }
         else
-        {            
+        {   
+            $data['sexo'] = $this->Sexo_model->get_all_sexo();
+            $data['discapacidad'] = $this->Discapacidad_model->get_all_discapacidad();
+            $data['escuelaProfesional'] = $this->Escuelaprofesional_model->get_all_escuelaprofesional();
+            $data['javascript'] = 'persona/addPersona.js';
             $data['_view'] = 'docente/add';
             $this->load->view('layouts/main',$data);
         }
@@ -50,18 +73,34 @@ class Docente extends CI_Controller{
     function edit($idDocente)
     {   
         // check if the docente exists before trying to edit it
-        $data['docente'] = $this->Docente_model->get_docente($idDocente);
+        $data['docente'] = $this->Docente_model->get_docente_persona($idDocente);
+        $data['sexo'] = $this->Sexo_model->get_all_sexo();
+        $data['discapacidad'] = $this->Discapacidad_model->get_all_discapacidad();
         
         if(isset($data['docente']['idDocente']))
         {
             if(isset($_POST) && count($_POST) > 0)     
             {   
-                $params = array(
-					'idPersona' => $this->input->post('idPersona'),
-					'idEscuelaProfesional' => $this->input->post('idEscuelaProfesional'),
+                $params_tutor = array(
+					'idPersona' => $this->input->post('dni'),
+					'idEscuelaProfesional' => $this->input->post('escuela_tecnica'),
                 );
 
-                $this->Docente_model->update_docente($idDocente,$params);            
+                $params_person = array(
+                    'idPersona' => $this->input->post('dni'),
+                    'apellidoPaterno' => strtolower($this->input->post('apellidoPaterno')),
+                    'apellidoMaterno' => strtolower($this->input->post('apellidoMaterno')),
+                    'nombres' => strtolower($this->input->post('nombres')),
+                    'idSexo' => $this->input->post('sexo'),
+                    'fechaNacimiento' => $this->input->post('fechaNacimiento'),
+                    'direccion' => $this->input->post('direccion'),
+                    'email' => $this->input->post('email'),
+                    'numCelular' => $this->input->post('numCelular'),
+                    'idDiscapacidad' => $this->input->post('discapacidad'),
+                );
+
+                $this->Docente_model->update_docente($idDocente,$params_tutor);
+                $this->Persona_model->update_persona($params_person['idPersona'], $params_person);            
                 redirect('docente/index');
             }
             else

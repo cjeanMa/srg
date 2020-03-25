@@ -53,4 +53,30 @@ class Estudiante_model extends CI_Model
     {
         return $this->db->delete('estudiante',array('idEstudiante'=>$idEstudiante));
     }
+
+            
+    /*
+     * Get all estudiante con sus datos personales
+     */
+    function get_all_estudiante_persona()
+    {
+        $this->db->from('estudiante e');
+        $this->db->join('persona p', 'e.idPersona=p.idPersona','left');
+        $this->db->join('semestreAcademico sa', 'e.idSemestreAcademico = sa.idSemestreAcademico','left');
+        $this->db->join('escuelaProfesional ep', 'e.idEscuelaProfesional = ep.idEscuelaProfesional','left');
+        $this->db->order_by('e.idEstudiante', 'desc');
+        $this->db->limit(50);
+        return $this->db->get()->result_array();
+    }
+     /*
+     * Get estudiante y datos de persona by idEstudiante
+     */
+    function get_estudiante_persona($idEstudiante)
+    {
+        $this->db->from('estudiante e');
+        $this->db->join('persona p', "e.idPersona=p.idPersona",'left');
+        $this->db->join('escuelaProfesional ep', 'e.idEscuelaProfesional = ep.idEscuelaProfesional','left');
+        return $this->db->get_where('estudiante',array('e.idEstudiante'=>$idEstudiante))->row_array();
+    }
+        
 }

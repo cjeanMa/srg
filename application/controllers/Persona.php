@@ -15,7 +15,6 @@ class Persona extends CI_Controller{
     function index()
     {
         $data['persona'] = $this->Persona_model->get_all_persona();
-        
         $data['_view'] = 'persona/index';
         $this->load->view('layouts/main',$data);
     }
@@ -105,5 +104,28 @@ class Persona extends CI_Controller{
         else
             show_error('The persona you are trying to delete does not exist.');
     }
+    
+    /*
+    * funcion para buscar los datos personales con metodo ajax
+    */
+    function cargarDatosPersonales(){
+        if($this->input->is_ajax_request()){
+            $datos = $this->input->post();
+            if(isset($datos)){
+                if($this->Persona_model->get_persona($datos['dni'])){
+                    $data['datos_persona'] = $this->Persona_model->get_persona($datos['dni']);
+                    $data['sexo'] = $this->Sexo_model->get_all_sexo();
+                    $data['discapacidad'] = $this->Discapacidad_model->get_all_discapacidad();
+                    $this->load->view('ajax/formDatosPersonales.php',$data);
+                }
+                else{
+                    $data['sexo'] = $this->Sexo_model->get_all_sexo();
+                    $data['discapacidad'] = $this->Discapacidad_model->get_all_discapacidad();
+                    $this->load->view('ajax/formDatosPersonales.php',$data);
+                }
+            }
+        }
+    }
+
     
 }
