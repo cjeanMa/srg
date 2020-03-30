@@ -9,10 +9,12 @@
   <!-- Custom scripts for all pages-->
   <script src="<?=asset_url()?>theme/js/sb-admin-2.min.js"></script>
   
-  <!-- Modificar el  archivo js que se utilizara-->
- <?php if(!empty($javascript)){?>
-		  <script src="<?=asset_url().'modulos/'.$javascript?>"></script>
-	<?php  } ?>
+  <!-- Modificar el o los archivos js que se utilizara-->
+ <?php if(!empty($javascript)){
+    foreach($javascript as $js){
+   ?>
+		  <script src="<?=asset_url().'modulos/'.$js?>"></script>
+	<?php } } ?>
 
 
 

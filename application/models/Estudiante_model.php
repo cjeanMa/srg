@@ -18,6 +18,16 @@ class Estudiante_model extends CI_Model
     {
         return $this->db->get_where('estudiante',array('idEstudiante'=>$idEstudiante))->row_array();
     }
+    /*
+     * Get estudiante by idPersona
+     */
+    function get_estudiante_idPersona($idPersona)
+    {
+        $this->db->from('estudiante e');
+        $this->db->join('escuelaProfesional ep','e.idEscuelaProfesional=ep.idEscuelaProfesional','left');
+        $this->db->where('e.idPersona',$idPersona);
+        return $this->db->get()->result_array();
+    }
         
     /*
      * Get all estudiante
@@ -77,6 +87,12 @@ class Estudiante_model extends CI_Model
         $this->db->join('persona p', "e.idPersona=p.idPersona",'left');
         $this->db->join('escuelaProfesional ep', 'e.idEscuelaProfesional = ep.idEscuelaProfesional','left');
         return $this->db->get_where('estudiante',array('e.idEstudiante'=>$idEstudiante))->row_array();
+    }
+    /*
+     * Get datos basicos de estudiante y persona para ajax de practicas 
+     */
+    function datos_basicosEstudiante_persona(){
+
     }
         
 }

@@ -3,7 +3,7 @@
 $(document).ready(function(){
 
 })
-
+//Funcion para cargar datos personales en los controladores de estudaintes y docentes
 function buscar_dni(){
     var dni = $('#dni').val();
     if(!dni){
@@ -25,3 +25,25 @@ function buscar_dni(){
         })
     }
 };
+
+//Funcion para cargar datos de nombre completo e id's de estudainte mediante el dni; Para el controlador de practicas
+
+function datos_persona_estudiante(){
+    var dni = $('#dni').val();
+    if(dni){
+        let data = 'idPersona='+dni;
+        $.ajax({
+            type:'POST',
+            url:'../Estudiante/datos_basicosEstudiante_persona',
+            data: data,
+            success: function(e){
+                $('#datos_base_practicas').html(e);    
+            }
+        })
+    }
+    else{
+        alert('Ingrese el campo de DNI:');
+        $('#dni').focus();
+    }
+}
+

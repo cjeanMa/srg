@@ -79,7 +79,7 @@ class Estudiante extends CI_Controller{
             $data['semestreAcademico'] = $this->Semestreacademico_model->get_all_semestreacademico();
             $data['escuelaProfesional'] = $this->Escuelaprofesional_model->get_all_escuelaprofesional();
             $data['_view'] = 'estudiante/add';
-            $data['javascript'] = "persona/addPersona.js";
+            $data['javascript'] = array("persona/addPersona.js");
             $this->load->view('layouts/main',$data);
         }
     }  
@@ -148,4 +148,14 @@ class Estudiante extends CI_Controller{
             show_error('The estudiante you are trying to delete does not exist.');
     }
     
+    function datos_basicosEstudiante_persona(){
+        if($this->input->is_ajax_request()){
+            $params = $this->input->post();
+            if(isset($params)){
+                $data['estudiante'] = $this->Estudiante_model->get_estudiante_idPersona($params['idPersona']);
+                $data['persona'] = $this->Persona_model->get_Persona($params['idPersona']);
+                $this->load->view('ajax/formPracticas',$data);
+            }
+        }
+    }
 }

@@ -61,7 +61,7 @@ class Docente extends CI_Controller{
             $data['sexo'] = $this->Sexo_model->get_all_sexo();
             $data['discapacidad'] = $this->Discapacidad_model->get_all_discapacidad();
             $data['escuelaProfesional'] = $this->Escuelaprofesional_model->get_all_escuelaprofesional();
-            $data['javascript'] = 'persona/addPersona.js';
+            $data['javascript'] = array('persona/addPersona.js');
             $data['_view'] = 'docente/add';
             $this->load->view('layouts/main',$data);
         }

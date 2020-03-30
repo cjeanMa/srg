@@ -13,7 +13,7 @@ class Practica extends CI_Controller{
      */
     function index()
     {
-        $data['practicas'] = $this->Practica_model->get_all_practicas();
+        $data['practicas'] = $this->Practica_model->get_all_complete_practicas();
         
         $data['_view'] = 'practica/index';
         $this->load->view('layouts/main',$data);
@@ -39,10 +39,11 @@ class Practica extends CI_Controller{
         }
         else
         {            
+            $data['javascript'] = array('persona/addPersona.js','modulo/getModulo.js');
             $data['_view'] = 'practica/add';
             $this->load->view('layouts/main',$data);
         }
-    }  
+    }
 
     /*
      * Editing a practica
@@ -50,7 +51,7 @@ class Practica extends CI_Controller{
     function edit($idPracticas)
     {   
         // check if the practica exists before trying to edit it
-        $data['practica'] = $this->Practica_model->get_practica($idPracticas);
+        $data['practica'] = $this->Practica_model->get_all_practica($idPracticas);
         
         if(isset($data['practica']['idPracticas']))
         {

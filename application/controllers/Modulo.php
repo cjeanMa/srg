@@ -137,5 +137,20 @@ class Modulo extends CI_Controller{
         }
     }  
 
+    /*
+     * para buscar los modulos correspondientes por estudiante
+     */
+
+     function cargarModulosEstudiante(){
+         if($this->input->is_ajax_request()){
+             $data = $this->input->post();
+            if(isset($data)){
+                    $data['modulos'] = $this->Modulo_model->get_modulosByEstudiante($data['idEstudiante']);
+                    $this->load->view('ajax/selectModulos', $data);
+            }
+         }
+     }
+
+
     
 }

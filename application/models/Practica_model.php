@@ -18,6 +18,20 @@ class Practica_model extends CI_Model
     {
         return $this->db->get_where('practicas',array('idPracticas'=>$idPracticas))->row_array();
     }
+
+    /*
+     * Get Datos completos de una practica para la edicion
+     */
+    function get_all_practica($idPractica)
+    {
+        $this->db->from('practicas pr');
+        $this->db->join('modulo m', 'pr.idModulo = m.idModulo','left');
+        $this->db->join('estudiante e', 'pr.idEstudiante = e.idEstudiante','left');
+        $this->db->join('persona p', 'e.idPersona = p.idPersona','left');
+        $this->db->join('escuelaProfesional ep','m.idEscuelaProfesional = ep.idEscuelaProfesional','left');
+        $this->db->where('pr.idPracticas',$idPractica);
+        return $this->db->get()->row_array();
+    }
         
     /*
      * Get all practicas
@@ -26,6 +40,20 @@ class Practica_model extends CI_Model
     {
         $this->db->order_by('idPracticas', 'desc');
         return $this->db->get('practicas')->result_array();
+    }
+
+    /*
+     * Get all complete practicas/ datos de carera - nombres- 
+     */
+    function get_all_complete_practicas()
+    {
+        $this->db->from('practicas pr');
+        $this->db->join('modulo m', 'pr.idModulo = m.idModulo','left');
+        $this->db->join('estudiante e', 'pr.idEstudiante = e.idEstudiante','left');
+        $this->db->join('persona p', 'e.idPersona = p.idPersona','left');
+        $this->db->order_by('idPracticas', 'desc');
+        $this->db->limit(30);
+        return $this->db->get()->result_array();
     }
         
     /*
