@@ -1,39 +1,68 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md">
+		<h2 class="text-center"><b>Actualizar Plazo de Subida de Matriculas</b></h2>
+		</div>
+	</div>
+	<div class="row pull-right">
+		<a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Regresar</a>
+	</div>
+	<hr>
+</div>
+
 <?php echo form_open('plazomatricula/edit/'.$plazomatricula['idPlazoMatricula'],array("class"=>"form-horizontal")); ?>
 
-	<div class="form-group">
-		<label for="fechaInicio" class="col-md-4 control-label">FechaInicio</label>
-		<div class="col-md-8">
-			<input type="text" name="fechaInicio" value="<?php echo ($this->input->post('fechaInicio') ? $this->input->post('fechaInicio') : $plazomatricula['fechaInicio']); ?>" class="form-control" id="fechaInicio" />
+<div class="container">
+	<div class="row form-group">
+		<div class="col-md">
+			<label for="idSemestreAcademico" class="col-md-4 control-label">Semestre Academico:</label>
+			<select name="idSemestreAcademico" id="idSemestreAcademico" class="form-control">
+				<option value="<?=$plazomatricula['idSemestreAcademico'];?>"><?=$plazomatricula['anio']."-".$plazomatricula['periodo'];?></option>
+			</select>
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="fechaLimite" class="col-md-4 control-label">FechaLimite</label>
-		<div class="col-md-8">
-			<input type="text" name="fechaLimite" value="<?php echo ($this->input->post('fechaLimite') ? $this->input->post('fechaLimite') : $plazomatricula['fechaLimite']); ?>" class="form-control" id="fechaLimite" />
+	<h4>Fecha Ordinarios:</h4>
+	<div class="row form-group">
+		<div class="col-md">
+			<label for="fechaInicio" class="col-md-4 control-label">Fecha Inicio:</label>
+			<input type="date" name="fechaInicio" class="form-control" id="fechaInicio" value="<?=$plazomatricula['fechaInicio'];?>"/>
+		</div>
+
+		<div class="col-md">	
+			<label for="fechaLimite" class="col-md-4 control-label">Fecha Limite:</label>
+			<input type="date" name="fechaLimite" class="form-control" id="fechaLimite" value="<?=$plazomatricula['fechaLimite'];?>"/>
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="fechaCreacion" class="col-md-4 control-label">FechaCreacion</label>
-		<div class="col-md-8">
-			<input type="text" name="fechaCreacion" value="<?php echo ($this->input->post('fechaCreacion') ? $this->input->post('fechaCreacion') : $plazomatricula['fechaCreacion']); ?>" class="form-control" id="fechaCreacion" />
+	<h4>Fechas Rezagados:</h4>
+	<div class="row form-group">
+		<div class="col-md">
+			<label for="fechaInicioRezagado" class="col-md-4 control-label">Fecha Inicio:</label>
+			<input type="date" name="fechaInicioRezagado" class="form-control" id="fechaInicioRezagado" value="<?=$plazomatricula['fechaInicioRezagado'];?>"/>
+		</div>
+
+		<div class="col-md">	
+			<label for="fechaLimiteRezagado" class="col-md-4 control-label">Fecha Limite:</label>
+			<input type="date" name="fechaLimiteRezagado" class="form-control" id="fechaLimiteRezagado" value="<?=$plazomatricula['fechaLimiteRezagado'];?>"/>
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="fechaModificacion" class="col-md-4 control-label">FechaModificacion</label>
-		<div class="col-md-8">
-			<input type="text" name="fechaModificacion" value="<?php echo ($this->input->post('fechaModificacion') ? $this->input->post('fechaModificacion') : $plazomatricula['fechaModificacion']); ?>" class="form-control" id="fechaModificacion" />
+	<h4>Fechas Extemporaneas:</h4>
+	<div class="row form-group">
+		<div class="col-md">
+			<label for="fechaInicioExtemporaneo" class="col-md-4 control-label">Fecha Inicio:</label>
+			<input type="date" name="fechaInicioExtemporaneo" class="form-control" id="fechaInicioExtemporaneo" value="<?=$plazomatricula['fechaInicioExtemporaneo'];?>"/>
+		</div>
+
+		<div class="col-md">	
+			<label for="fechaLimiteExtemporaneo" class="col-md-4 control-label">Fecha Limite:</label>
+			<input type="date" name="fechaLimiteExtemporaneo" class="form-control" id="fechaLimiteExtemporaneo" value="<?=$plazomatricula['fechaLimiteExtemporaneo'];?>"/>
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="idSemestreAcademico" class="col-md-4 control-label">IdSemestreAcademico</label>
-		<div class="col-md-8">
-			<input type="text" name="idSemestreAcademico" value="<?php echo ($this->input->post('idSemestreAcademico') ? $this->input->post('idSemestreAcademico') : $plazomatricula['idSemestreAcademico']); ?>" class="form-control" id="idSemestreAcademico" />
-		</div>
+
 	</div>
 	
-	<div class="form-group">
-		<div class="col-sm-offset-4 col-sm-8">
-			<button type="submit" class="btn btn-success">Save</button>
+	<div class="row form-group">
+		<div class="col-md text-center">
+			<button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar</button>
         </div>
 	</div>
 	

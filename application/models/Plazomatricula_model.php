@@ -16,7 +16,10 @@ class Plazomatricula_model extends CI_Model
      */
     function get_plazomatricula($idPlazoMatricula)
     {
-        return $this->db->get_where('plazomatricula',array('idPlazoMatricula'=>$idPlazoMatricula))->row_array();
+        $this->db->from('plazomatricula pm');
+        $this->db->join('semestreacademico sa', 'pm.idSemestreAcademico = sa.idSemestreAcademico', 'left');
+        $this->db->where('pm.idPlazoMatricula',$idPlazoMatricula);
+        return $this->db->get()->row_array();
     }
         
     /*
@@ -24,8 +27,10 @@ class Plazomatricula_model extends CI_Model
      */
     function get_all_plazomatricula()
     {
-        $this->db->order_by('idPlazoMatricula', 'desc');
-        return $this->db->get('plazomatricula')->result_array();
+        $this->db->from('plazomatricula pm');
+        $this->db->join('semestreacademico sa', 'pm.idSemestreAcademico = sa.idSemestreAcademico', 'left');
+        $this->db->order_by('pm.idSemestreAcademico', 'desc');
+        return $this->db->get()->result_array();
     }
         
     /*

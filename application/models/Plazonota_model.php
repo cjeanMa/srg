@@ -16,7 +16,10 @@ class Plazonota_model extends CI_Model
      */
     function get_plazonota($idPlazoNotas)
     {
-        return $this->db->get_where('plazonotas',array('idPlazoNotas'=>$idPlazoNotas))->row_array();
+        $this->db->from('plazonotas pn');
+        $this->db->join('semestreAcademico sa', 'pn.idSemestreAcademico = sa.idSemestreAcademico','left');
+        $this->db->where('pn.idPlazoNotas',$idPlazoNotas);
+        return $this->db->get()->row_array();
     }
         
     /*
@@ -24,8 +27,10 @@ class Plazonota_model extends CI_Model
      */
     function get_all_plazonotas()
     {
-        $this->db->order_by('idPlazoNotas', 'desc');
-        return $this->db->get('plazonotas')->result_array();
+        $this->db->from('plazonotas pn');
+        $this->db->join('semestreAcademico sa', 'pn.idSemestreAcademico = sa.idSemestreAcademico','left');
+        $this->db->order_by('pn.idSemestreAcademico', 'desc');
+        return $this->db->get()->result_array();
     }
         
     /*
