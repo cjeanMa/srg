@@ -5,7 +5,7 @@
 			</div>
 			<div class="col-md">
 				<hr>
-				<a class="btn btn-info btn-block" onclick="datos_persona_estudiante();" title="Buscar"><i class="fa fa-search"></i> Buscar</a>
+				<a class="btn btn-info btn-block" onclick="datos_persona_estudiante('practicas');" title="Buscar"><i class="fa fa-search"></i> Buscar</a>
 			</div>
 			<div class="col-md">
 				<label for="idEstudiante">Programa de Estudio:</label>

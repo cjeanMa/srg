@@ -6,6 +6,8 @@ class Practica extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Practica_model');
+        $this->load->model('Escuelaprofesional_model');
+        $this->load->model('Modulo_model');
     } 
 
     /*
@@ -14,7 +16,8 @@ class Practica extends CI_Controller{
     function index()
     {
         $data['practicas'] = $this->Practica_model->get_all_complete_practicas();
-        
+        $data['escuelaProfesional'] = $this->Escuelaprofesional_model->get_all_escuelaprofesional();
+        $data['javascript'] = array('practica/index.js');
         $data['_view'] = 'practica/index';
         $this->load->view('layouts/main',$data);
     }
@@ -39,7 +42,7 @@ class Practica extends CI_Controller{
         }
         else
         {            
-            $data['javascript'] = array('persona/addPersona.js','modulo/getModulo.js');
+            $data['javascript'] = array('persona/addPersona.js','practica/addPractica.js');
             $data['_view'] = 'practica/add';
             $this->load->view('layouts/main',$data);
         }
@@ -93,6 +96,24 @@ class Practica extends CI_Controller{
         }
         else
             show_error('The practica you are trying to delete does not exist.');
+    }
+
+    /*
+    *Funcion para filtrar la lista de practicas
+    */
+
+    function filtrarPracticas(){
+        if($this->input->is_ajax_request()){
+            $datos = $this->input->post();
+            if(isset($datos)){
+                $params = array();
+                    $datos['idPersona']!="*"?$params['e.idPersona']=$datos['idPersona']:"";
+                    $datos['idEscuelaProfesional']!="*"?$params['m.idEscuelaProfesional']=$datos['idEscuelaProfesional']:"";
+                    $datos['idModulo']!="*"?$params['pr.idModulo']=$datos['idModulo']:"";
+                $data['practicas'] = $this->Practica_model->filtroPractica($params);
+                $this->load->view('ajax/tablePractica',$data);
+            }
+        }
     }
     
 }

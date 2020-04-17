@@ -17,7 +17,6 @@ $(document).ready(function(){
                         'disabled' : false,
                     })
     });
-
     
     $('#fechaInicioRezagado').change(function(){
         let valor = $(this).val();
@@ -29,9 +28,6 @@ $(document).ready(function(){
                         'disabled': false,
                     });
     });
-
-
-    
 
     $('#fechaLimiteRezagado').change(function(){
         let valor = $(this).val();
@@ -56,26 +52,3 @@ $(document).ready(function(){
 
 
 })
-
-
-/*
-function compFechas(){
-    let auxTime = document.getElementById('fechaInicio').value.split('-');
-    let dateInit = new Date(parseInt(auxTime[0]),parseInt(auxTime[1]-1),parseInt(auxTime[2]));
-        auxTime = document.getElementById('fechaLimite').value.split('-')
-    let dateEnd = new Date(parseInt(auxTime[0]),parseInt(auxTime[1]-1),parseInt(auxTime[2]));
-    if(!isNaN(dateInit) && !isNaN(dateEnd)){
-        if(dateInit > dateEnd){
-            confirm('No existe coherencia en las fechas de Inicio y Limite, desea continuar con la modificacion?');
-            document.getElementById('fechaInicio').focus();
-            }
-        }
-    else{
-        if(isNaN(dateInit)){
-            document.getElementById('fechaInicio').focus();
-        }
-        else{
-            document.getElementById('fechaLimite').focus();
-        }
-    }
-}*/

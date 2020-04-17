@@ -16,7 +16,7 @@ class Escuelaprofesional extends CI_Controller{
     function index()
     {
         $data['escuelaprofesional'] = $this->Escuelaprofesional_model->get_all_escuelaprofesional();
-        
+        $data['javascript'] = array('escuelaProfesional/index.js');
         $data['_view'] = 'escuelaprofesional/index';
         $this->load->view('layouts/main',$data);
     }

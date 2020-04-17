@@ -17,7 +17,8 @@ class Docente extends CI_Controller{
     function index()
     {
         $data['docente'] = $this->Docente_model->get_all_docente_persona();
-        
+        $data['escuelaProfesional']=$this->Escuelaprofesional_model->get_all_escuelaprofesional();
+        $data['javascript'] = array("docente/index.js");
         $data['_view'] = 'docente/index';
         $this->load->view('layouts/main',$data);
     }
@@ -128,6 +129,26 @@ class Docente extends CI_Controller{
         }
         else
             show_error('The docente you are trying to delete does not exist.');
+    }
+
+     /*
+    *Funcion para filtrar la lista de docentes
+    */
+
+    function filtrarDocentes(){
+        if($this->input->is_ajax_request()){
+            $datos = $this->input->post();
+            if(isset($datos)){
+                $params = array();
+                $datos['idPersona']!="*"?$params['d.idPersona']=$datos['idPersona']:"";
+                $datos['idEscuelaProfesional']!="*"?$params['d.idEscuelaProfesional']=$datos['idEscuelaProfesional']:"";
+                $datos['apellidoPaterno']!="*"?$params['p.apellidoPaterno']=$datos['apellidoPaterno']:"";
+                $datos['apellidoMaterno']!="*"?$params['p.apellidoMaterno']=$datos['apellidoMaterno']:"";
+                $datos['nombres']!="*"?$params['p.nombres']=$datos['nombres']:"";
+                $data['docente'] = $this->Docente_model->filtroDocente($params);
+                $this->load->view('ajax/tableDocentes',$data);
+            }
+        }
     }
     
 }

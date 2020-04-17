@@ -26,6 +26,7 @@ class Estudiante_model extends CI_Model
         $this->db->from('estudiante e');
         $this->db->join('escuelaProfesional ep','e.idEscuelaProfesional=ep.idEscuelaProfesional','left');
         $this->db->where('e.idPersona',$idPersona);
+        $this->db->order_by('e.idEstudiante', 'desc');
         return $this->db->get()->result_array();
     }
         
@@ -35,7 +36,18 @@ class Estudiante_model extends CI_Model
     function get_all_estudiante()
     {
         $this->db->order_by('idEstudiante', 'desc');
+        $this->db->limit(100);
         return $this->db->get('estudiante')->result_array();
+    }
+
+    /*
+     * Get estudiantes con filtros
+     */
+    function filtroEstudiante($params){
+        $this->db->join('persona p', 'e.idPersona=p.idPersona','left');
+        $this->db->join('semestreAcademico sa', 'e.idSemestreAcademico = sa.idSemestreAcademico','left');
+        $this->db->join('escuelaProfesional ep','e.idEscuelaProfesional=ep.idEscuelaProfesional','left');
+        return $this->db->get_where('estudiante e',$params)->result_array();
     }
         
     /*

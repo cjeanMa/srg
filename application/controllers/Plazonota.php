@@ -15,7 +15,7 @@ class Plazonota extends CI_Controller{
     {
 
         $data['plazonotas'] = $this->Plazonota_model->get_all_plazonotas();
-        
+        $data['javascript'] = array('plazos/indexPlazoNota.js');
         $data['_view'] = 'plazonota/index';
         $this->load->view('layouts/main',$data);
     }
@@ -87,7 +87,7 @@ class Plazonota extends CI_Controller{
             }
             else
             {
-                $data['javascript'] = array('plazos/addPlazos.js');  
+                $data['javascript'] = array('plazos/editPlazoNota.js');  
                 $data['_view'] = 'plazonota/edit';
                 $this->load->view('layouts/main',$data);
             }

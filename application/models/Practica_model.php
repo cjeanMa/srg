@@ -81,4 +81,14 @@ class Practica_model extends CI_Model
     {
         return $this->db->delete('practicas',array('idPracticas'=>$idPracticas));
     }
+
+    /*
+     * Get estudiantes con filtros
+     */
+    function filtroPractica($params){
+        $this->db->join('modulo m', 'pr.idModulo = m.idModulo','left');
+        $this->db->join('estudiante e', 'pr.idEstudiante = e.idEstudiante','left');
+        $this->db->join('escuelaProfesional ep','m.idEscuelaProfesional = ep.idEscuelaProfesional','left');
+        return $this->db->get_where('practicas pr', $params)->result_array();
+    }
 }

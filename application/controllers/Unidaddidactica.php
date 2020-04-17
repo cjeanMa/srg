@@ -16,7 +16,7 @@ class Unidaddidactica extends CI_Controller{
     function index()
     {
         $data['unidaddidactica'] = $this->Unidaddidactica_model->get_all_unidaddidactica();
-        
+        $data['javascript'] = array('unidadDidactica/index.js');
         $data['_view'] = 'unidaddidactica/index';
         $this->load->view('layouts/main',$data);
     }

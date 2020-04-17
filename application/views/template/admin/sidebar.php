@@ -12,12 +12,12 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-      <!-- Nav Item - Dashboard -->
+      <!-- Nav Item - Dashboard 
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url(); ?>">
+        <a class="nav-link" href="<?php //echo base_url(); ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
-      </li>
+      </li>-->
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -96,7 +96,7 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url();?>certificados">
+        <a class="nav-link" href="<?php echo base_url();?>documentos">
           <i class="fas fa-fw fa-table"></i>
           <span>Certificados y Constancias</span></a>
       </li>

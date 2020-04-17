@@ -23,7 +23,7 @@
 			</div>
 			<div class="col-md">
 				<hr>
-				<a class="btn btn-info btn-block" onclick="datos_persona_estudiante();" title="Buscar"><i class="fa fa-search"></i> Buscar</a>
+				<a class="btn btn-info btn-block" onclick="datos_persona_estudiante('practicas');" title="Buscar"><i class="fa fa-search"></i> Buscar</a>
 			</div>
 			<div class="col-md">
 				<label for="idEstudiante">Programa de Estudio:</label>
@@ -48,7 +48,7 @@
 	<div class="row form-group" id="modulos">
 		<div class="col-md">
 			<label for="">Modulo:</label>
-			<select name="idModulo" class="form-control" id="idModulo" disabled>
+			<select name="idModulo" class="form-control" id="idModulo" onclick="select_modulo();" disabled>
 				<option value="">--Seleccione--</option>
 			</select>
 		</div>
@@ -72,11 +72,21 @@
 			<input type="text" name="direccion" class="form-control" id="direccion" placeholder="Direccion o Ubicacion de su infraestrutura" disabled />
 		</div>
 	</div>
+	<div class="row form-group">
+		<div class="col-md">
+			<label for="fechaInicioPracticas">Fecha de Inicio: </label>
+			<input type="date" name="fechaInicioPracticas" id="fechaInicioPracticas" class="form-control" disabled>
+		</div>
+		<div class="col-md">
+			<label for="fechaFinPracticas">Fecha de Culminacion:</label>
+			<input type="date" name="fechaFinPracticas" id="fechaFinPracticas" class="form-control" disabled>
+		</div>
+	</div>
 
 	
 	<div class="row form-group text-center">
 		<div class="col-md">
-			<button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Aceptar</button>
+			<button type="submit" id="btnAceptar" class="btn btn-success"><i class="fa fa-check"></i> Aceptar</button>
         </div>
 	</div>
 </div>

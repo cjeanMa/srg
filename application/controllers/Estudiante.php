@@ -20,7 +20,9 @@ class Estudiante extends CI_Controller{
     function index()
     {
         $data['estudiante'] = $this->Estudiante_model->get_all_estudiante_persona();
-        
+        $data['escuelaProfesional']=$this->Escuelaprofesional_model->get_all_escuelaprofesional();
+        $data['semestreAcademico']=$this->Semestreacademico_model->get_all_semestreacademico();
+        $data['javascript'] = array('estudiante/index.js');
         $data['_view'] = 'estudiante/index';
         $this->load->view('layouts/main',$data);
     }
@@ -154,7 +156,35 @@ class Estudiante extends CI_Controller{
             if(isset($params)){
                 $data['estudiante'] = $this->Estudiante_model->get_estudiante_idPersona($params['idPersona']);
                 $data['persona'] = $this->Persona_model->get_Persona($params['idPersona']);
-                $this->load->view('ajax/formPracticas',$data);
+                switch($params['vista']){
+                    case 'practicas':
+                        $this->load->view('ajax/formPractica',$data);
+                        break;
+                    case 'documentos':
+                        $this->load->view('ajax/formDocumento',$data);
+                    break;
+                } 
+            }
+        }
+    }
+
+    /*
+    *Funcion para filtrar la lista de estudiantes
+    */
+
+    function filtrarEstudiantes(){
+        if($this->input->is_ajax_request()){
+            $datos = $this->input->post();
+            if(isset($datos)){
+                $params = array();
+                $datos['idPersona']!="*"?$params['e.idPersona']=$datos['idPersona']:"";
+                $datos['idEscuelaProfesional']!="*"?$params['e.idEscuelaProfesional']=$datos['idEscuelaProfesional']:"";
+                $datos['idSemestreAcademico']!="*"?$params['e.idSemestreAcademico']=$datos['idSemestreAcademico']:"";
+                $datos['apellidoPaterno']!="*"?$params['p.apellidoPaterno']=$datos['apellidoPaterno']:"";
+                $datos['apellidoMaterno']!="*"?$params['p.apellidoMaterno']=$datos['apellidoMaterno']:"";
+                $datos['nombres']!="*"?$params['p.nombres']=$datos['nombres']:"";
+                $data['estudiante'] = $this->Estudiante_model->filtroEstudiante($params);
+                $this->load->view('ajax/tableEstudiantes',$data);
             }
         }
     }

@@ -26,15 +26,15 @@ function buscar_dni(){
     }
 };
 
-//Funcion para cargar datos de nombre completo e id's de estudainte mediante el dni; Para el controlador de practicas
+//Funcion para cargar datos de nombre completo e id's de estudainte mediante el dni; Para el controlador de practicas y documentos
 
-function datos_persona_estudiante(){
+function datos_persona_estudiante(view){
     var dni = $('#dni').val();
     if(dni){
-        let data = 'idPersona='+dni;
+        let data = 'idPersona='+dni+"&vista="+view;
         $.ajax({
             type:'POST',
-            url:'../Estudiante/datos_basicosEstudiante_persona',
+            url:'../../ra/Estudiante/datos_basicosEstudiante_persona',
             data: data,
             success: function(e){
                 $('#datos_base_practicas').html(e);    

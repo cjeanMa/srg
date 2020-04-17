@@ -14,7 +14,7 @@ class Plazomatricula extends CI_Controller{
     function index()
     {
         $data['plazomatricula'] = $this->Plazomatricula_model->get_all_plazomatricula();
-        
+        $data['javascript']=array('plazos/indexPlazoMatricula.js');
         $data['_view'] = 'plazomatricula/index';
         $this->load->view('layouts/main',$data);
     }
@@ -84,7 +84,6 @@ class Plazomatricula extends CI_Controller{
                     'fechaLimiteRezagado' => $this->input->post('fechaLimiteRezagado'),
                     'fechaInicioExtemporaneo' => $this->input->post('fechaInicioExtemporaneo'),
                     'fechaLimiteExtemporaneo' => $this->input->post('fechaLimiteExtemporaneo'),
-					'fechaCreacion' => $this->input->post('fechaCreacion'),
 					'fechaModificacion' => $fechaCodificada,
 					'idSemestreAcademico' => $this->input->post('idSemestreAcademico'),
                 );
@@ -94,7 +93,7 @@ class Plazomatricula extends CI_Controller{
             }
             else
             {
-                $data['javascript'] = array('plazos/addPlazos.js'); 
+                $data['javascript'] = array('plazos/editPlazoMatricula.js'); 
                 $data['_view'] = 'plazomatricula/edit';
                 $this->load->view('layouts/main',$data);
             }
