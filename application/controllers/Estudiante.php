@@ -188,4 +188,21 @@ class Estudiante extends CI_Controller{
             }
         }
     }
+
+    /*
+    * Funcion para filtrar los modulos que culmino un estudiante --- de momento jalará los modulos que debe llevar sin filtro hasta que este matricula
+    */
+    
+    function modulosByEstudiante(){
+        if($this->input->is_ajax_request()){
+            $datos = $this->input->post();
+                if(isset($params)){
+                    $params = array(
+                        'e.idEstudiante'=>$datos['idEstudiante']
+                    );
+                    $data['modulos'] = $this->Estudiante_model->modulosByEstudiante($params);
+                    $this->load->view('ajax/listModulos',$data);
+                }
+        }
+    }
 }
