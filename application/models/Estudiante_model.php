@@ -27,7 +27,7 @@ class Estudiante_model extends CI_Model
         $this->db->join('escuelaProfesional ep','e.idEscuelaProfesional=ep.idEscuelaProfesional','left');
         $this->db->where('e.idPersona',$idPersona);
         $this->db->order_by('e.idEstudiante', 'desc');
-        return $this->db->get()->result_array();
+        return $this->db->get()->row_array();
     }
         
     /*
@@ -76,11 +76,10 @@ class Estudiante_model extends CI_Model
         return $this->db->delete('estudiante',array('idEstudiante'=>$idEstudiante));
     }
 
-    // function get_estudiante_persona($idPersona)
+    // function get_estudiante_has_persona($idPersona)
     // {
     //     return $this->db->get_where('estudiante',array('idPersona'=>$idPersona))->row_array();
     // }
-
             
     /*
      * Get all estudiante con sus datos personales

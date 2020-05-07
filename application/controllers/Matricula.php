@@ -45,7 +45,7 @@ class Matricula extends CI_Controller{
         $tipo_matricula=$this->Tipomatricula_model->get_all_tipomatricula();
         // $idPersona = $this->input->post('idPersona');
         // echo  $idPersona ;
-        $estudiante=$this->Estudiante_model->get_estudiante_persona($idPersona);
+        $estudiante=$this->Estudiante_model->get_estudiante_idPersona($idPersona);
         // var_dump($estudiante);
         // echo json_encode($escuela);
         // echo $escuela['idEscuelaProfesional'];
