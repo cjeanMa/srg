@@ -83,11 +83,23 @@ class Modulo_model extends CI_Model
      */
 
      function get_modulo_ep($idModulo){
-         //$this->db->select('*');
          $this->db->from('modulo m');
          $this->db->join('escuelaprofesional ep','m.idEscuelaProfesional = ep.idEscuelaProfesional','left');
          $this->db->where('m.idModulo', $idModulo);
          $this->db->order_by('m.idModulo','DESC');
          return $this->db->get()->row_array();
+     }
+
+    /*
+     * Get modulos correspondientes a un estudainte / solo los id y nombre de modulos
+     */
+
+     function get_modulosByEstudiante($idEstudiante){
+         $this->db->select('m.idModulo, m.nombreModulo');
+         $this->db->from('estudiante e');
+         $this->db->join('escuelaProfesional ep', 'e.idEscuelaProfesional = ep.idEscuelaProfesional','left');
+         $this->db->join('modulo m', 'ep.idEscuelaProfesional = m.idEscuelaProfesional','left');
+         $this->db->where('e.idEstudiante',$idEstudiante);
+         return $this->db->get()->result_array();
      }
 }

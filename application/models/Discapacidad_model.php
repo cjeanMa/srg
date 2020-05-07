@@ -24,7 +24,7 @@ class Discapacidad_model extends CI_Model
      */
     function get_all_discapacidad()
     {
-        $this->db->order_by('idDiscapacidad', 'desc');
+        $this->db->order_by('idDiscapacidad', 'asc');
         return $this->db->get('discapacidad')->result_array();
     }
         

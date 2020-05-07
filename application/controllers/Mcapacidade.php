@@ -16,7 +16,7 @@ class Mcapacidade extends CI_Controller{
     function index()
     {
         $data['mcapacidades'] = $this->Mcapacidade_model->get_all_mcapacidades();
-        
+        $data['javascript'] = array('mcapacidades/index.js');
         $data['_view'] = 'mcapacidade/index';
         $this->load->view('layouts/main',$data);
     }

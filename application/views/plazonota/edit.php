@@ -1,39 +1,45 @@
-<?php echo form_open('plazonota/edit/'.$plazonota['idPlazoNotas'],array("class"=>"form-horizontal")); ?>
+<div class="container">
+	<div class="row">
+		<div class="col-md">
+		<h2 class="text-center"><b>Actualizar Plazo de Subida de Notas</b></h2>
+		</div>
+	</div>
+	<div class="row pull-right">
+		<a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Regresar</a>
+	</div>
+	<hr>
+</div>
 
-	<div class="form-group">
-		<label for="fechaInicio" class="col-md-4 control-label">FechaInicio</label>
-		<div class="col-md-8">
-			<input type="text" name="fechaInicio" value="<?php echo ($this->input->post('fechaInicio') ? $this->input->post('fechaInicio') : $plazonota['fechaInicio']); ?>" class="form-control" id="fechaInicio" />
+<?php echo form_open('plazonota/edit/'.$plazonota['idPlazoNotas'],array("class"=>"form-horizontal")); ?>
+<div class="container">
+	<div class="row form-group">
+		<div class="col-md">
+			<label for="idSemestreAcademico" class="col-md-4 control-label">Semestre Academico:</label>
+			<select name="idSemestreAcademico" id="idSemestreAcademico" class="form-control">
+					<option value="<?=$plazonota['idSemestreAcademico'];?>" selected><?=$plazonota['anio']."-".$plazonota['periodo'];?></option>
+			</select>
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="fechaLimite" class="col-md-4 control-label">FechaLimite</label>
-		<div class="col-md-8">
-			<input type="text" name="fechaLimite" value="<?php echo ($this->input->post('fechaLimite') ? $this->input->post('fechaLimite') : $plazonota['fechaLimite']); ?>" class="form-control" id="fechaLimite" />
+	<div>
+		<input type="date" name="fechaCreacion" id="fechaCreacion" value="<?php echo $plazonota['fechaCreacion']?>" hidden>
+	</div>
+	<div class="row form-group">
+		<div class="col-md">
+			<label for="fechaInicio" class="col-md-4 control-label">Fecha Inicio:</label>
+			<input type="date" name="fechaInicio" class="form-control" id="fechaInicio" value="<?=$plazonota['fechaInicio'];?>" onchange="compFechas();"/>
+		</div>
+
+		<div class="col-md">	
+			<label for="fechaLimite" class="col-md-4 control-label">Fecha Limite:</label>
+			<input type="date" name="fechaLimite" class="form-control" id="fechaLimite" value="<?=$plazonota['fechaLimite'];?>" onchange="compFechas();"/>
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="fechaCreacion" class="col-md-4 control-label">FechaCreacion</label>
-		<div class="col-md-8">
-			<input type="text" name="fechaCreacion" value="<?php echo ($this->input->post('fechaCreacion') ? $this->input->post('fechaCreacion') : $plazonota['fechaCreacion']); ?>" class="form-control" id="fechaCreacion" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="fechaModificacion" class="col-md-4 control-label">FechaModificacion</label>
-		<div class="col-md-8">
-			<input type="text" name="fechaModificacion" value="<?php echo ($this->input->post('fechaModificacion') ? $this->input->post('fechaModificacion') : $plazonota['fechaModificacion']); ?>" class="form-control" id="fechaModificacion" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="idSemestreAcademico" class="col-md-4 control-label">IdSemestreAcademico</label>
-		<div class="col-md-8">
-			<input type="text" name="idSemestreAcademico" value="<?php echo ($this->input->post('idSemestreAcademico') ? $this->input->post('idSemestreAcademico') : $plazonota['idSemestreAcademico']); ?>" class="form-control" id="idSemestreAcademico" />
-		</div>
+
 	</div>
 	
-	<div class="form-group">
-		<div class="col-sm-offset-4 col-sm-8">
-			<button type="submit" class="btn btn-success">Save</button>
+	<div class="row form-group">
+		<div class="col-md text-center">
+			<button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar</button>
         </div>
 	</div>
 	

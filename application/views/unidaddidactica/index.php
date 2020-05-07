@@ -28,27 +28,31 @@
 	</div>
 
 <hr>
-<table class="table table-striped table-bordered">
-    <tr class="text-center">
-		<th>Unidad Didactica</th>
-		<th>Creditos</th>
-		<th>Horas</th>
-		<th>Semestre</th>
-		<th>Modulo</th>
-		<th>Acciones</th>
-    </tr>
-	<?php foreach($unidaddidactica as $u){ ?>
-    <tr>
-		<td><?php echo $u['nombreUnidadDidactica']; ?></td>
-		<td><?php echo $u['creditos']; ?></td>
-		<td><?php echo $u['horasunidad']; ?></td>
-		<td><?php echo $u['idSemestre']; ?></td>
-		<td><?php echo $u['idModulo']; ?></td>
-		<td class="text-center">
-			<?php //if()?>
-            <a href="<?php echo site_url('unidaddidactica/edit/'.$u['idUnidadDidactica']); ?>"><i class="fa fa-edit"></i> </a> 
-            <a href="<?php echo site_url('unidaddidactica/remove/'.$u['idUnidadDidactica']); ?>"><i class="fa fa-trash"></i></a>
-        </td>
-    </tr>
-	<?php } ?>
+<table class="table table-striped table-bordered" id="table_unidadDidactica">
+	<thead>
+		<tr class="text-center">
+			<th>Unidad Didactica</th>
+			<th>Creditos</th>
+			<th>Horas</th>
+			<th>Semestre</th>
+			<th>Modulo</th>
+			<th>Acciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach($unidaddidactica as $u){ ?>
+		<tr>
+			<td><?php echo $u['nombreUnidadDidactica']; ?></td>
+			<td><?php echo $u['creditos']; ?></td>
+			<td><?php echo $u['horasunidad']; ?></td>
+			<td><?php echo $u['idSemestre']; ?></td>
+			<td><?php echo $u['idModulo']; ?></td>
+			<td class="text-center">
+				<?php //if()?>
+				<a href="<?php echo site_url('unidaddidactica/edit/'.$u['idUnidadDidactica']); ?>"><i class="fa fa-edit"></i> </a> 
+				<a href="<?php echo site_url('unidaddidactica/remove/'.$u['idUnidadDidactica']); ?>"><i class="fa fa-trash"></i></a>
+			</td>
+		</tr>
+		<?php } ?>
+	</tbody>
 </table>

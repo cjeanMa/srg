@@ -24,7 +24,7 @@ class Dashboard extends CI_Controller{
         $data['discapacidades'] = $this->Discapacidad_model->get_all_discapacidad();
         $data['sexos'] = $this->Sexo_model->get_all_sexo();
         //para cargar el js 
-        $data['javascript'] = 'dashboard/administrator.js';
+        $data['javascript'] = array('dashboard/administrator.js');
         $data['_view'] = 'administrator';
         $this->load->view('layouts/main', $data);
 

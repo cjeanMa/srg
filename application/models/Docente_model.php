@@ -53,4 +53,37 @@ class Docente_model extends CI_Model
     {
         return $this->db->delete('docente',array('idDocente'=>$idDocente));
     }
+
+     /*
+     * Get all docentes con sus datos personales
+     */
+    function get_all_docente_persona()
+    {
+        $this->db->from('docente d');
+        $this->db->join('persona p', 'd.idPersona=p.idPersona','left');
+        $this->db->join('escuelaProfesional ep', 'd.idEscuelaProfesional = ep.idEscuelaProfesional','left');
+        $this->db->order_by('d.idDocente', 'desc');
+        $this->db->limit(20);
+        return $this->db->get()->result_array();
+    }
+
+    /*
+     * Get docente y datos de persona by idDocente
+     */
+    function get_docente_persona($idDocente)
+    {
+        $this->db->from('docente d');
+        $this->db->join('persona p', "d.idPersona=p.idPersona",'left');
+        $this->db->join('escuelaProfesional ep', 'd.idEscuelaProfesional = ep.idEscuelaProfesional','left');
+        return $this->db->get_where('docente',array('d.idDocente'=>$idDocente))->row_array();
+    }
+
+    /*
+     * Get estudiantes con filtros
+     */
+    function filtroDocente($params){
+        $this->db->join('persona p', 'd.idPersona=p.idPersona','left');
+        $this->db->join('escuelaProfesional ep','d.idEscuelaProfesional=ep.idEscuelaProfesional','left');
+        return $this->db->get_where('docente d',$params)->result_array();
+    }
 }

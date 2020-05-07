@@ -14,6 +14,7 @@ class Modulo extends CI_Controller{
     function index()
     {
         $data['modulo'] = $this->Modulo_model->get_all_modulo_ep();
+        $data['javascript'] = array("modulo/index.js");
         $data['_view'] = 'modulo/index';
         $this->load->view('layouts/main',$data);
     }
@@ -108,10 +109,10 @@ class Modulo extends CI_Controller{
      */
     function modulosByEp($idEscuelaProfesional){
         $data['escuelaprofesional'] = $this->EscuelaProfesional_model->get_escuelaprofesional($idEscuelaProfesional);
-        $data['modulo'] = $this->Modulo_model->get_all_modulo_by_ep($idEscuelaProfesional);
-        
-        $data['_view'] = 'modulo/index';
-        $this->load->view('layouts/main',$data);
+        $data['modulos'] = $this->Modulo_model->get_all_modulo_by_ep($idEscuelaProfesional);
+
+            $data['_view'] = 'modulo/index';
+            $this->load->view('layouts/main',$data);
     }
 
     /*
@@ -136,6 +137,34 @@ class Modulo extends CI_Controller{
             $this->load->view('layouts/main',$data);
         }
     }  
+
+    /*
+     * para buscar los modulos correspondientes por estudiante
+     */
+
+     function cargarModulosEstudiante(){
+         if($this->input->is_ajax_request()){
+             $data = $this->input->post();
+            if(isset($data)){
+                    $data['modulos'] = $this->Modulo_model->get_modulosByEstudiante($data['idEstudiante']);
+                    $this->load->view('ajax/selectModulos', $data);
+            }
+         }
+     }
+
+     /*
+     *  Para filtrar modulos por escuelaProfesional con ajax, y mostrarlo en option
+     */
+
+    function modulosByEpAjax(){
+        if($this->input->is_ajax_request()){
+            $data = $this->input->post();
+            if(isset($data)){
+                $data['modulos'] = $this->Modulo_model->get_all_modulo_by_ep($data['idEscuelaProfesional']);
+                $this->load->view('ajax/selectModulos', $data);
+            }
+        }
+    }
 
     
 }

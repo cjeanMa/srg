@@ -24,7 +24,7 @@ class Sexo_model extends CI_Model
      */
     function get_all_sexo()
     {
-        $this->db->order_by('idSexo', 'desc');
+        $this->db->order_by('idSexo', 'asc');
         return $this->db->get('sexo')->result_array();
     }
         
