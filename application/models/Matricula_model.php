@@ -53,4 +53,8 @@ class Matricula_model extends CI_Model
     {
         return $this->db->delete('matricula',array('idMatricula'=>$idMatricula));
     }
+    function get_matricula_has_idestudiante($idestudiante)
+    {
+        return $this->db->get_where('matricula',array('idestudiante'=>$idestudiante))->row_array();
+    }
 }

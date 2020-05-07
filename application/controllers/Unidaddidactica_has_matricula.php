@@ -27,8 +27,8 @@ class Unidaddidactica_has_matricula extends CI_Controller{
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
-				'nota' => $this->input->post('nota'),
-				'notaLetras' => $this->input->post('notaLetras'),
+				'unidadDidactica_idUnidadDidactica' => $this->input->post('unidadDidactica_idUnidadDidactica'),
+				'matricula_idMatricula' => $this->input->post('matricula_idMatricula'),
 				'observacion' => $this->input->post('observacion'),
             );
             

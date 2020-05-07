@@ -53,4 +53,8 @@ class Estudiante_model extends CI_Model
     {
         return $this->db->delete('estudiante',array('idEstudiante'=>$idEstudiante));
     }
+    function get_estudiante_persona($idPersona)
+    {
+        return $this->db->get_where('estudiante',array('idPersona'=>$idPersona))->row_array();
+    }
 }

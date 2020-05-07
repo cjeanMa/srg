@@ -53,4 +53,12 @@ class Plazomatricula_model extends CI_Model
     {
         return $this->db->delete('plazomatricula',array('idPlazoMatricula'=>$idPlazoMatricula));
     }
+
+    function get_plazo_matricula(){
+        $query = $this->db->query("select pm.idPlazoMatricula, pm.fechaInicio, pm.fechaLimite, sa.idSemestreAcademico, sa.anio, sa.periodo from plazomatricula as pm JOIN semestreacademico as sa on pm.idSemestreAcademico=sa.idSemestreAcademico where now() <fechaLimite and now()>fechaInicio");
+
+       return $query->row_array();
+       // $query->result_array()
+
+    }
 }

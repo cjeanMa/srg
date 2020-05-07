@@ -70,7 +70,7 @@ class Modulo_model extends CI_Model
      */
     function get_all_modulo_by_ep($idEscuelaProfesional)
     {
-        $this->db->select('m.idModulo, m.nombreModulo, m.horasModulo, m.idEscuelaProfesional, ep.nombreEscuelaProfesional');
+        $this->db->select('m.idModulo, m.nombreModulo, m.horasModulo, m.idEscuelaProfesional,m.ordenModulo, ep.nombreEscuelaProfesional');
         $this->db->from('modulo m');
         $this->db->join('escuelaProfesional ep', 'm.idEscuelaProfesional = ep.idEscuelaProfesional', 'left');
         $this->db->where('m.idEscuelaProfesional', $idEscuelaProfesional);

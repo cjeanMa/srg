@@ -74,4 +74,9 @@ class Unidaddidactica_model extends CI_Model
         $this->db->order_by('idUnidadDidactica', 'desc');
         return $this->db->get_where('unidaddidactica',$condicional)->result_array();
     }
+    function get_unidadesdidacticas_by_modulos_by_semestres_by_escuela($idEscuelaProfesional){
+        $query = $this->db->query("SELECT UD.idUnidadDidactica, UD.nombreUnidadDidactica, UD.creditos, UD.horasunidad, UD.idSemestre, UD.idModulo, S.romanos, S.nombre, M.nombreModulo FROM unidaddidactica as UD INNER JOIN semestre as S ON UD.idSemestre=S.idSemestre INNER JOIN modulo as M on M.idModulo=UD.idModulo WHERE M.idEscuelaProfesional=".$idEscuelaProfesional.";");
+        return $query->result_array();
+
+    }
 }
