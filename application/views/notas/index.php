@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md">
-            <h2 class="text-center">Documentos</h2>
+            <h2 class="text-center"><b>Notas</b></h2>
         </div>
     </div>
     <div class="row">
@@ -16,25 +16,21 @@
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" id="doc1-tab" data-toggle="tab" href="#doc1" role="tab" aria-controls="doc1" aria-selected="true">Certificados y Constancias</a>
+        <a class="nav-link active" id="notaSemestre-tab" data-toggle="tab" href="#notaSemestre" role="tab" aria-controls="notaSemestre" aria-selected="true">Notas/Seccion</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="doc2-tab" data-toggle="tab" href="#doc2" role="tab" aria-controls="doc2" aria-selected="false">Consolidados</a>
+        <a class="nav-link" id="notasEstudiante-tab" data-toggle="tab" href="#notasEstudiante" role="tab" aria-controls="notasEstudiante" aria-selected="false">Notas Estudiante</a>
     </li>
 
     </ul>
     <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="doc1" role="tabpanel" aria-labelledby="doc1-tab">
+    <div class="tab-pane fade show active" id="notaSemestre" role="tabpanel" aria-labelledby="notaSemestre-tab">
     <div class="row">
         <div class="col-md">
         <div class="card">
-            <div class="card-header text-center">
-                CONSTANCIAS Y CERTIFICADOS
-            </div>
+        <h5 class="card-header text-center">Buscar Notas por Seccion</h5>
 
             <div class="card-body">
-                <!--Division para cargar los datos basicos como los id's de estudiante, mediante el select carrer_estudainte-->
-	
                 <!--Division para cargar los datos basicos como los id's de estudiante, mediante el select carrer_estudainte-->
                     <div id="datos_base">
                         <div class="row form-group">
@@ -99,9 +95,9 @@
     </div>
     </div>
     <!--tab 2-->
-    <div class="tab-pane fade" id="doc2" role="tabpanel" aria-labelledby="doc2-tab">
+    <div class="tab-pane fade" id="notasEstudiante" role="tabpanel" aria-labelledby="notasEstudiante-tab">
             <div class="card">
-                <h5 class="card-header text-center">CONSOLIDADOS</h5>
+                <h5 class="card-header text-center">Buscar Notas de Estudiante</h5>
                 <div class="card-body">
                     <div class="row form-group">
                         <div class="col-md">

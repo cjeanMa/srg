@@ -9,7 +9,7 @@
 			</div>
 			<div class="col-md">
 				<label for="idEstudiante">Programa de Estudio:</label>
-				<select name="idEstudiante" id="idEstudiante" onchange="buscar_modulos();" class="form-control" <?php echo $estudiante!=null?"":"disabled";?>>
+<select name="idEstudiante" id="idEstudiante" onchange="buscar_modulos();" class="form-control" <?php echo $estudiante!=null?"":"disabled";?>>
                     <option value="">--Seleccione--</option>
                     <?php foreach($estudiante as $e){?>
                         <option value="<?php echo $e['idEstudiante'];?>"><?php echo $e['nombreEscuelaProfesional'];?></option>

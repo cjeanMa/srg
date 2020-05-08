@@ -102,4 +102,5 @@ class Modulo_model extends CI_Model
          $this->db->where('e.idEstudiante',$idEstudiante);
          return $this->db->get()->result_array();
      }
+
 }

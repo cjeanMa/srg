@@ -100,11 +100,5 @@ class Estudiante_model extends CI_Model
         $this->db->join('escuelaProfesional ep', 'e.idEscuelaProfesional = ep.idEscuelaProfesional','left');
         return $this->db->get_where('estudiante',array('e.idEstudiante'=>$idEstudiante))->row_array();
     }
-    /*
-     * Get datos basicos de estudiante y persona para ajax de practicas 
-     */
-    function datos_basicosEstudiante_persona(){
 
-    }
-        
 }
