@@ -19,7 +19,7 @@ class Estudiante_model extends CI_Model
         return $this->db->get_where('estudiante',array('idEstudiante'=>$idEstudiante))->row_array();
     }
     /*
-     * Get estudiante by idPersona
+     * Get estudiante by idPersona / para mostrar una lista de estudiantes con el mismo numero de dni
      */
     function get_estudiante_idPersona($idPersona)
     {

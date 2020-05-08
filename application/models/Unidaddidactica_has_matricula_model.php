@@ -53,4 +53,9 @@ class Unidaddidactica_has_matricula_model extends CI_Model
     {
         return $this->db->delete('unidadDidactica_has_matricula',array('unidadDidactica_idunidadDidactica'=>$unidadDidactica_idunidadDidactica));
     }
+    function get_all_unidaddidactica_has_idmatricula($idmatricula){
+        $query = $this->db->query("SELECT * FROM unidaddidactica_has_matricula as udm RIGHT JOIN unidaddidactica as ud on ud.idUnidadDidactica=udm.unidadDidactica_idUnidadDidactica WHERE udm.matricula_idMatricula = ".$idmatricula."");
+
+       return $query->result_array();
+    }
 }

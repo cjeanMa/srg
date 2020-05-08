@@ -119,4 +119,5 @@ class Plazomatricula extends CI_Controller{
             show_error('The plazomatricula you are trying to delete does not exist.');
     }
     
+    
 }
