@@ -53,4 +53,10 @@ class Semestreacademico_model extends CI_Model
     {
         return $this->db->delete('semestreacademico',array('idSemestreAcademico'=>$idSemestreAcademico));
     }
+    function get_lastsemestreacademico(){
+        $this->db->join('plazoMatricula pm', 'pm.idSemestreAcademico=sa.idSemestreAcademico','left');
+        $this->db->order_by('sa.idSemestreAcademico', 'desc');
+        $this->db->limit(1);
+        return $this->db->get('semestreacademico sa')->row_array();
+    }
 }

@@ -13,7 +13,8 @@ class Matricula extends CI_Controller{
         $this->load->model('Semestre_model');
         $this->load->model('Tipomatricula_model');
         $this->load->model('Plazomatricula_model');
-         $this->load->model('Unidaddidactica_has_matricula_model');
+        $this->load->model('Unidaddidactica_has_matricula_model');
+        $this->load->model('Semestreacademico_model');
         
         
     } 
@@ -23,8 +24,11 @@ class Matricula extends CI_Controller{
      */
     function index()
     {
+        $semestre_academico=$this->plazo_matricula();
+        // $data['state_fecha']=plazo_matricula($semestre_academico);
         $data['matricula'] = $this->Matricula_model->get_all_matricula();
-        
+        $data['semestre_academico']=$semestre_academico;
+        // var_dump($data['semestre_academico']);
         $data['_view'] = 'matricula/index';
         $this->load->view('layouts/matricula',$data);
     }
@@ -34,76 +38,83 @@ class Matricula extends CI_Controller{
      */
     function add()
     {   
+        $semestre_academico=$this->plazo_matricula();
+        if ($semestre_academico['state_plazo_matricula']==false) {
+            redirect('matricula/');
+        }else{
+
+            
         // echo "string";
-        $id_estudiante=$_COOKIE["idEstudiante"];
-        $data['modulos']='';
-        $array_modulos=array();
-        $array_unidades=array();
-        $array_semestre=array();
-        $all_unidades=array();
-        $semestre=$this->Semestre_model->get_all_semestre();
+            $id_estudiante=$_COOKIE["idEstudiante"];
+            $data['modulos']='';
+            $array_modulos=array();
+            $array_unidades=array();
+            $array_semestre=array();
+            $all_unidades=array();
+            $semestre=$this->Semestre_model->get_all_semestre();
         // var_dump($semestre);
-        $tipo_matricula=$this->Tipomatricula_model->get_all_tipomatricula();
+            $tipo_matricula=$this->Tipomatricula_model->get_all_tipomatricula();
         // $idPersona = $this->input->post('idPersona');
         // echo  $idPersona ;
         // $estudiante=$this->Estudiante_model->get_estudiante_idPersona($idPersona);
-        $estudiante=$this->Estudiante_model->get_estudiante($id_estudiante);
+            $estudiante=$this->Estudiante_model->get_estudiante($id_estudiante);
 
         // var_dump($estudiante);
         // echo json_encode($escuela);
         // echo $escuela['idEscuelaProfesional'];
         // $modulos=$this->Modulo_model->get_all_modulo_by_ep($estudiante['idEscuelaProfesional']);
-        $unidades=$this->Unidaddidactica_model->get_unidadesdidacticas_by_modulos_by_semestres_by_escuela($estudiante['idEscuelaProfesional']);
-        $unidades_aprobadas=$this->Unidaddidactica_has_matricula_model->get_all_unidaddidactica_has_idestudiante($id_estudiante);
+            $unidades=$this->Unidaddidactica_model->get_unidadesdidacticas_by_modulos_by_semestres_by_escuela($estudiante['idEscuelaProfesional']);
+            $unidades_aprobadas=$this->Unidaddidactica_has_matricula_model->get_all_unidaddidactica_has_idestudiante($id_estudiante);
         // $unidades_merge=array_merge($unidades,$unidades_aprobadas);
         // var_dump($unidades_merge);
         // $unidades_faltantes=array_diff($unidades,$unidades_aprobadas);
          // $unidades_faltantes=array_unique($unidades_merge);
-        $unidades_faltantes = array_diff(array_map('json_encode', $unidades), array_map('json_encode', $unidades_aprobadas));
-        $unidades_faltantes = array_map('json_decode', $unidades_faltantes);
+            $unidades_faltantes = array_diff(array_map('json_encode', $unidades), array_map('json_encode', $unidades_aprobadas));
+            $unidades_faltantes = array_map('json_decode', $unidades_faltantes);
 
 
         // $unidades_faltantes=get_object_vars($unidades_faltantes);
         // var_dump($unidades_faltantes);
         // var_dump($unidades[0]);
         // var_dump($unidades_aprobadas);
-        $unidades_faltantes2=json_decode(json_encode($unidades_faltantes),true);
+            $unidades_faltantes2=json_decode(json_encode($unidades_faltantes),true);
 
-        foreach ($unidades_faltantes2 as $key => $value) {
-            $all_unidades[$value['idUnidadDidactica']] = array(
-                'creditos'=>$value['creditos'],
-                'idUnidadDidactica'=>$value['idUnidadDidactica'],
-                'nombreUnidadDidactica'=>$value['nombreUnidadDidactica'],
-            );
-        }
-        
-
-        foreach ($unidades_faltantes2 as $key => $value) {
-            $array_unidades[$value['romanos']][]= array(
-                'idUnidadDidactica'=> $value['idUnidadDidactica'],
-                'nombreUnidadDidactica'=> $value['nombreUnidadDidactica'],
-                'creditos'=> $value['creditos'],
-                'horasunidad'=> $value['horasunidad'],
-                'idSemestre'=> $value['idSemestre'],
-                'idModulo'=> $value['idModulo'],
-                'romanos'=> $value['romanos'],
-                'nombre'=> $value['nombre'],
-                'nombreModulo'=> $value['nombreModulo'],
+            foreach ($unidades_faltantes2 as $key => $value) {
+                $all_unidades[$value['idUnidadDidactica']] = array(
+                    'creditos'=>$value['creditos'],
+                    'idUnidadDidactica'=>$value['idUnidadDidactica'],
+                    'nombreUnidadDidactica'=>$value['nombreUnidadDidactica'],
                 );
-        }
-        foreach ($semestre as $key => $value) {
-            $array_semestre[] = array(
-                'idSemestre'=>$value['idSemestre'],
-                'romanos'=>$value['romanos'],
-                'nombre'=>$value['nombre'],
-                'prenombre'=>(int)$value['prenombre'],
-                'unidadDidacticas'=>(@$array_unidades[$value['romanos']]?@$array_unidades[$value['romanos']]:[]),
-            );
-        }
+            }
+            
 
-        $plazo_matricula=$this->Plazomatricula_model->get_plazo_matricula();
+            foreach ($unidades_faltantes2 as $key => $value) {
+                $array_unidades[$value['romanos']][]= array(
+                    'idUnidadDidactica'=> $value['idUnidadDidactica'],
+                    'nombreUnidadDidactica'=> $value['nombreUnidadDidactica'],
+                    'creditos'=> $value['creditos'],
+                    'horasunidad'=> $value['horasunidad'],
+                    'idSemestre'=> $value['idSemestre'],
+                    'idModulo'=> $value['idModulo'],
+                    'romanos'=> $value['romanos'],
+                    'nombre'=> $value['nombre'],
+                    'nombreModulo'=> $value['nombreModulo'],
+                );
+            }
+            foreach ($semestre as $key => $value) {
+                $array_semestre[] = array(
+                    'idSemestre'=>$value['idSemestre'],
+                    'romanos'=>$value['romanos'],
+                    'nombre'=>$value['nombre'],
+                    'prenombre'=>(int)$value['prenombre'],
+                    'unidadDidacticas'=>(@$array_unidades[$value['romanos']]?@$array_unidades[$value['romanos']]:[]),
+                );
+            }
+
+            $plazo_matricula=$this->Plazomatricula_model->get_plazo_matricula();
         // var_dump($plazo_matricula);
-        $cursos='';
+            $cursos='';
+        }
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
@@ -234,6 +245,15 @@ class Matricula extends CI_Controller{
         
         // echo "nada";
         // var_dump($estudiante);
+    }
+    public function  plazo_matricula(){
+         $semestre_academico=$this->Semestreacademico_model->get_lastsemestreacademico();
+        $semestre_academico['state_plazo_matricula']=(date("Y-m-d")>$semestre_academico['fechaInicio']&&date("Y-m-d")<$semestre_academico['fechaLimite']);
+
+        // array_push($semestre_academico, array('state_plazo_matricula'=>$state_plazo_matricula));
+        // var_dump($semestre_academico);
+         return $semestre_academico;
+       // return 
     }
     
 }
