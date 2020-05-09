@@ -19,7 +19,7 @@ class Estudiante_model extends CI_Model
         return $this->db->get_where('estudiante',array('idEstudiante'=>$idEstudiante))->row_array();
     }
     /*
-     * Get estudiante by idPersona
+     * Get estudiante by idPersona / para mostrar una lista de estudiantes con el mismo numero de dni
      */
     function get_estudiante_idPersona($idPersona)
     {
@@ -76,10 +76,6 @@ class Estudiante_model extends CI_Model
         return $this->db->delete('estudiante',array('idEstudiante'=>$idEstudiante));
     }
 
-    // function get_estudiante_has_persona($idPersona)
-    // {
-    //     return $this->db->get_where('estudiante',array('idPersona'=>$idPersona))->row_array();
-    // }
             
     /*
      * Get all estudiante con sus datos personales
@@ -104,12 +100,5 @@ class Estudiante_model extends CI_Model
         $this->db->join('escuelaProfesional ep', 'e.idEscuelaProfesional = ep.idEscuelaProfesional','left');
         return $this->db->get_where('estudiante',array('e.idEstudiante'=>$idEstudiante))->row_array();
     }
-    /*
-     * Get datos basicos de estudiante y persona para ajax de practicas 
-     */
-    function datos_basicosEstudiante_persona(){
-
-    }
-        
 
 }

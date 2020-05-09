@@ -15,7 +15,7 @@
 <?php echo form_open('practica/add',array("class"=>"form-horizontal")); ?>
 <div class="container">
 	<!--Division para cargar los datos basicos como los id's de estudiante, mediante el select carrer_estudainte-->
-	<div id="datos_base_practicas">
+	<div id="datos_base">
 		<div class="row form-group">
 			<div class="col-md">			
 				<label for="dni" class="col-md-4 control-label">DNI:</label>

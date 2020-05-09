@@ -45,7 +45,7 @@
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#optDocentes" aria-expanded="true" aria-controls="optDocentes">
-          <i class="fas fa-user"></i>
+          <i class="fas fa-user-tie"></i>
           <span>Docentes</span>
         </a>
         <div id="optDocentes" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -68,7 +68,7 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#optMatriculas" aria-expanded="true" aria-controls="optMatriculas">
-          <i class="fas fa-fw fa-folder"></i>
+          <i class="fas fa-fw fa-atlas"></i>
           <span>Matriculas</span>
         </a>
         <div id="optMatriculas" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -102,16 +102,10 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#optPlazos" aria-expanded="true" aria-controls="optPlazos">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Plazos</span>
-        </a>
-        <div id="optPlazos" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Opciones</h6>
-            <a class="collapse-item" href="<?php echo base_url();?>plazomatricula">Plazos Matricula</a>
-            <a class="collapse-item" href="<?php echo base_url();?>plazonota">Plazos Notas</a>
-        </div>
+      <a class="nav-link" href="<?php echo base_url();?>notas">
+          <i class="fas fa-clipboard"></i>
+          <span>Notas</span>
+        </a>        
       </li>
 
       <!-- Divider -->
@@ -134,6 +128,19 @@
             <a class="collapse-item" href="<?php echo base_url();?>modulo">Lista de Modulos</a>
             <a class="collapse-item" href="<?php echo base_url();?>unidaddidactica">Lista de Uni. Didacticas</a>
             <a class="collapse-item" href="<?php echo base_url();?>mCapacidade">Lista de Cap. Modulares</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#optPlazos" aria-expanded="true" aria-controls="optPlazos">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Plazos</span>
+        </a>
+        <div id="optPlazos" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Opciones</h6>
+            <a class="collapse-item" href="<?php echo base_url();?>plazomatricula">Plazos Matricula</a>
+            <a class="collapse-item" href="<?php echo base_url();?>plazonota">Plazos Notas</a>
         </div>
       </li>
 
