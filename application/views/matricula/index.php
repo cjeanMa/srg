@@ -73,26 +73,30 @@
     })
     .done(function(data) {
       // console.log("success");
-      // console.log(data);
+      console.log(data);
       persona  = jQuery.parseJSON(data);
       html_head='<table class="table table-striped">'+
             '<thead class="thead-dark">'+
               '<tr>'+
                 '<th scope="col">#</th>'+
                 '<th scope="col">Nombre y Apellido</th>'+
-                '<th scope="col">Semestre</th>'+
+                '<th scope="col">Escuela Profesional</th>'+
                 '<th scope="col">Opción</th>'+
               '</tr>'+
             '</thead>';
-
-      html_body='<tbody>'+
-                  '<tr>'+
-                    '<th scope="row">1</th>'+
-                    '<td>'+persona.nombres+' '+persona.apellidoPaterno+' '+persona.apellidoPaterno+'</td>'+
-                    '<td>'+(persona.idEscuelaProfesional?persona.idEscuelaProfesional:'NULL')+'</td>'+
-                    '<td><span class=" btn btn-sm btn-primary" onclick="btnMatricular('+persona.idPersona+','+persona.idEstudiante+');">Matricular</span>'+
-                  '</tr>'+
-                '</tbody>';
+            html_body='<tbody>';
+            persona.estudiante.forEach(function(estudiante,index ) {
+              console.log(index);
+              html_body+='<tr>'+
+                          '<th scope="row">'+parseInt(index+1)+'</th>'+
+                          '<td>'+persona.nombres+' '+persona.apellidoPaterno+' '+persona.apellidoPaterno+'</td>'+
+                          '<td>'+estudiante.nombreEscuelaProfesional+'</td>'+
+                          '<td><span class=" btn btn-sm btn-primary" onclick="btnMatricular('+estudiante.idPersona+','+estudiante.idEstudiante+');">Matricular</span>'+
+                        '</tr>';
+            });
+      
+                  
+            html_body+='</tbody>';
        html_footer='</table>';
        $('#loadEstudiante').html(html_head+html_body+html_footer);
 
@@ -105,9 +109,9 @@
     });
   });
   function btnMatricular(idpersona,idestudiante){
-    document.cookie = "idPersona="+idpersona;
-    document.cookie = "idEstudiante="+idestudiante;
-    window.location.href = "<?=base_url();?>Matricula/add/"+idpersona;
+    document.cookie = "idPersona="+idpersona+'; max-age=86400000; path=/';
+    document.cookie = "idEstudiante="+idestudiante+'; max-age=86400000; path=/';
+    window.location.href = "<?=base_url();?>Matricula/add/";
   }
 
  

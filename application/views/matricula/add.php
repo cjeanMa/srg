@@ -171,7 +171,7 @@ console.log(estudiante);
 		$(document).on('click', '#btn_matricular', function(event) {
 			id_tipo_matricula=$( "select#idTipoMatricula" ).val();
 			$.ajax({
-				url: '<?=base_url();?>'+'Matricula/add/<?=$idpersona;?>',
+				url: '<?=base_url();?>'+'Matricula/add/',
 				type: 'POST',
 				dataType: 'json',
 				data: {

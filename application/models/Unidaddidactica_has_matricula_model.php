@@ -53,8 +53,22 @@ class Unidaddidactica_has_matricula_model extends CI_Model
     {
         return $this->db->delete('unidadDidactica_has_matricula',array('unidadDidactica_idunidadDidactica'=>$unidadDidactica_idunidadDidactica));
     }
-    function get_all_unidaddidactica_has_idmatricula($idmatricula){
-        $query = $this->db->query("SELECT * FROM unidaddidactica_has_matricula as udm RIGHT JOIN unidaddidactica as ud on ud.idUnidadDidactica=udm.unidadDidactica_idUnidadDidactica WHERE udm.matricula_idMatricula = ".$idmatricula."");
+    function get_all_unidaddidactica_has_idestudiante($idestduiante){
+        $query = $this->db->query("
+            SELECT ud.idUnidadDidactica,ud.nombreUnidadDidactica,ud.creditos,ud.horasunidad,ud.idSemestre,ud.idModulo, s.romanos, s.nombre, m.nombreModulo, e.idEstudiante, e.idPersona, e.idEscuelaProfesional 
+            FROM unidaddidactica_has_matricula as udm 
+            RIGHT JOIN unidaddidactica as ud 
+            on ud.idUnidadDidactica=udm.idUnidadDidactica 
+            RIGHT JOIN matricula as ma
+            on ma.idMatricula=udm.idMatricula
+            RIGHT join estudiante as e
+            on e.idEstudiante=ma.idEstudiante
+            LEFT JOIN semestre as s 
+            ON ud.idSemestre=s.idSemestre 
+            LEFT JOIN modulo as m 
+            on m.idModulo=ud.idModulo
+            WHERE udm.idEstadoUnidadDidactica = 1
+            and e.idEstudiante=".$idestduiante."");
 
        return $query->result_array();
     }

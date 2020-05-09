@@ -27,7 +27,7 @@ class Estudiante_model extends CI_Model
         $this->db->join('escuelaProfesional ep','e.idEscuelaProfesional=ep.idEscuelaProfesional','left');
         $this->db->where('e.idPersona',$idPersona);
         $this->db->order_by('e.idEstudiante', 'desc');
-        return $this->db->get()->row_array();
+        return $this->db->get()->result_array();
     }
         
     /*
