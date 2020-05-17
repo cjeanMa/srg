@@ -109,7 +109,7 @@ class Modulo extends CI_Controller{
      */
     function modulosByEp($idEscuelaProfesional){
         $data['escuelaprofesional'] = $this->EscuelaProfesional_model->get_escuelaprofesional($idEscuelaProfesional);
-        $data['modulos'] = $this->Modulo_model->get_all_modulo_by_ep($idEscuelaProfesional);
+        $data['modulo'] = $this->Modulo_model->get_all_modulo_by_ep($idEscuelaProfesional);
 
             $data['_view'] = 'modulo/index';
             $this->load->view('layouts/main',$data);
