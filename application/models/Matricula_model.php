@@ -57,4 +57,21 @@ class Matricula_model extends CI_Model
     {
         return $this->db->get_where('matricula',array('idestudiante'=>$idestudiante))->row_array();
     }
+    function get_matricula_has_idestudiante_has_semestre_academico($idestudiante,$idsemestreacademico){
+                        $query = $this->db->query("
+                                    SELECT ma.idMatricula,ud.nombreUnidadDidactica, ud.creditos,ud.horasunidad,ud.idSemestre FROM unidaddidactica as ud
+                                    left join unidaddidactica_has_matricula as udm
+                                    on ud.idUnidadDidactica=udm.idUnidadDidactica
+                                    left join matricula as ma
+                                    on ma.idMatricula=udm.idMatricula
+                                    left JOIN estudiante as es
+                                    on es.idEstudiante=ma.idEstudiante
+                                    left join semestreacademico as sea
+                                    on sea.idSemestreAcademico=ma.idSemestreAcademico
+                                    WHERE es.idEstudiante=".$idestudiante." and sea.idSemestreAcademico=".$idsemestreacademico.";
+
+                                    ");
+       return $query->result_array();
+
+    }
 }

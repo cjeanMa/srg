@@ -1,28 +1,25 @@
-<?php if ($semestre_academico['state_plazo_matricula']) {
+<!-- <?php if ($semestre_academico['state_plazo_matricula']) {
   $temp_txt = "primary";
 } else {
   $temp_txt = "danger";
 }
-?>
+?> -->
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="<?=base_url();?>sia">SIA</a></li>
-    <li class="breadcrumb-item"><a href="<?=base_url();?>sia/dashboard">Dashboard</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Matricula</li>
+    <li class="breadcrumb-item active" aria-current="page">SIA</li>
   </ol>
 </nav>
-<!-- 
-<div class="card  border-left-<?=$temp_txt;?> form-group">
-  <div class="card-body p-2">
-    Semestre Academico: <b><?=$semestre_academico['anio'] . '-' . $semestre_academico['periodo'];?></b>
-    Matricula del: <b><?=$semestre_academico['fechaInicio'] . ' al ' . $semestre_academico['fechaLimite'];?></b>
-  </div>
-</div>
-<h2 class="text-center form-group"><b>Matricula de estudiante</b></h2>
+
+
+<h2 class="text-center form-group"><b>SISTEMA DE INFORMACION ACADEMICA </b></h2>
+
 <div class="form-group d-flex justify-content-center">
 
   <div class="input-group col-md-6 d-flex justify-content-center">
-    <input type="text" id="idEstudiante" class="form-control bg-light " placeholder="codigo estudiante" aria-label="Search" aria-describedby="basic-addon2" value="12760003">
+  	<div class="col-md-12 text-center">
+  		<b>Buscar estudiante</b>
+  	</div>
+    <input type="text" id="idEstudiante" class="form-control bg-light " placeholder="DNI estudiante" aria-label="Search" aria-describedby="basic-addon2" value="12760003">
     <div class="input-group-append">
       <span class="btn btn-primary" id="btnBuscar" >
         <span class="fa fa-search fa-sm" > BUSCAR</span>
@@ -34,7 +31,7 @@
 <div class="form-group" id="loadEstudiante">
 
 </div>
-
+<!-- Modal -->
 <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content border-0">
@@ -50,44 +47,19 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
   </div>
-</div> -->
-<!--  -->
-<?php if ($unidaddidactica_has_matricula==NULL): ?>
-  No tiene matricula para el presente semestre <a href="<?=base_url();?>sia/matricula/add" title="" class="btn btn-danger">Agregar matricula</a>
-<?php else: ?>
-  <h3 class="font-weight-bold text-capitalize">ficha matricula</h3>
+</div>
 
-<table class="table  table-striped table-bordered">
-      <thead class="thead-dark text-capitalize text-center">
-        <tr>
-          <!-- <th colspan="3">Ficha de Matricula</th> -->
-          <th>Unidad Didactica</th>
-          <th>Credito</th>
-          <th>Semestre</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($unidaddidactica_has_matricula as $key => $value): ?>
-          <tr>
-            <th><?=$value['nombreUnidadDidactica'];?></th>
-            <td><?=$value['creditos'];?></td>
-            <td><?=$value['idSemestre'];?></td>
-          </tr>
-        <?php endforeach ?>
-        
-      </tbody>
-    </table>
-<?php endif ?>
-<!--  -->
 <script type="text/javascript">
   // console.log($('#idEstudiante').val());
   // matricula search student
   var temp_color='';
+  temp_color='primary';
   var state_fecha='';
-  estado_plazomatricula();
+  // estado_plazomatricula();
   console.log('temp1');
   var persona;
   $(document).on('click', '#btnBuscar', function() {
@@ -124,7 +96,8 @@
                     '<th scope="row">'+parseInt(index+1)+'</th>'+
                     '<td>'+persona.nombres+' '+persona.apellidoPaterno+' '+persona.apellidoPaterno+'</td>'+
                     '<td>'+estudiante.nombreEscuelaProfesional+'</td>'+
-                    '<td><span class=" btn btn-sm btn-'+temp_color+'" onclick="btnMatricular('+estudiante.idPersona+','+estudiante.idEstudiante+');">Matricular</span>'+
+                    '<td>'+
+                    '<span class=" btn btn-sm btn-'+temp_color+'" onclick="btnMatricular('+estudiante.idPersona+','+estudiante.idEstudiante+');">Ver</span>'+
                     '</tr>';
       });
 
@@ -142,26 +115,26 @@
     });
   });
   function btnMatricular(idpersona,idestudiante){
-    if (state_fecha==false) {
-      $('#ModalCenter').modal('show');
-    }else{
+    // if (state_fecha==false) {
+    //   $('#ModalCenter').modal('show');
+    // }else{
       document.cookie = "idPersona="+idpersona+'; max-age=86400000; path=/';
       document.cookie = "idEstudiante="+idestudiante+'; max-age=86400000; path=/';
-      window.location.href = "<?=base_url();?>Matricula/add/";
-    }
+      window.location.href = "<?=base_url();?>sia/dashboard";
+    // }
     // console.log(state_fecha);
     
     
   }
-  function estado_plazomatricula(){
-    var semestre_academico=jQuery.parseJSON('<?=json_encode(@$semestre_academico); ?>');
-    state_fecha=semestre_academico['state_plazo_matricula'];
-    if (state_fecha) {
-      temp_color='primary';
-    }else{
-      temp_color='danger';
-    }
-  }
+  // function estado_plazomatricula(){
+  //   var semestre_academico=jQuery.parseJSON('<?=json_encode(@$semestre_academico); ?>');
+  //   state_fecha=semestre_academico['state_plazo_matricula'];
+  //   if (state_fecha) {
+  //     temp_color='primary';
+  //   }else{
+  //     temp_color='danger';
+  //   }
+  // }
 
 
 </script>

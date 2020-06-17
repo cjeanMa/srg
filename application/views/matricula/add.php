@@ -1,7 +1,40 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="<?=base_url();?>sia">SIA</a></li>
+    <li class="breadcrumb-item"><a href="<?=base_url();?>sia/dashboard">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="<?=base_url();?>sia/matricula">Matricula</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Agregar Matricula</li>
+  </ol>
+</nav>
 <div class="row">
+	<div class="col-md-12">
+		<table class="table  table-striped table-bordered">
+			<thead class="thead-dark text-capitalize text-center">
+				<tr>
+					<th colspan="2">Datos del Estudiante</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Escuela Profesional:</th>
+					<td><?=$estudiante['nombreEscuelaProfesional'];?></td>
+				</tr>
+				<tr>
+					<th>Apellidos y Nombres:</th>
+					<td><?=$estudiante['apellidoPaterno'].' '.$estudiante['apellidoMaterno'].', '.$estudiante['nombres'];?></td>
+				</tr>
+				<tr>
+					<th>Docuemnto Nacional de Identidad (DNI):</th>
+					<td><?=$estudiante['idPersona'];?></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
 	<div class="col-md-12  form-group">
 		<div class="float-left">
-			<?=$plazo_matricula['idSemestreAcademico'];?>
+			<?=$semestre_academico['idSemestreAcademico'];?>
 		</div>
 		<div class="float-left">
 					<label>Tipo de matricula</label>
@@ -27,10 +60,10 @@
 </div>
 <script type="text/javascript" charset="utf-8" async defer>
 	
-    	var semestre_escuela=jQuery.parseJSON('<?=json_encode(@$semestre); ?>');
-		var all_unidades=jQuery.parseJSON('<?=json_encode(@$all_unidades); ?>');
+    	var semestre_escuela=jQuery.parseJSON('<?=json_encode(@$data['cursos_x_semestre']); ?>');
+		var cursos_escuela=jQuery.parseJSON('<?=json_encode(@$data['cursos_escuela']); ?>');
 		var estudiante=jQuery.parseJSON('<?=json_encode(@$estudiante); ?>');
-		var plazo_matricula=jQuery.parseJSON('<?=json_encode(@$plazo_matricula); ?>');
+		var semestre_academico=jQuery.parseJSON('<?=json_encode(@$semestre_academico); ?>');
 		
 		// var tipo_matricula=jQuery.parseJSON('<?=json_encode(@$tipo_matricula); ?>');
 		// var unidadesDidacticas;
@@ -92,11 +125,11 @@ console.log(estudiante);
 		  
 		    if($(this).hasClass("selecionado")){
 		      $(this).removeClass('fa-check-square selecionado').addClass('fa-square');
-		      creditos-=parseFloat(all_unidades[id_unidadDidactica].creditos);
+		      creditos-=parseFloat(cursos_escuela[id_unidadDidactica].creditos);
 		      cursos_selecionados=remover_curso( cursos_selecionados,id_unidadDidactica);
 		    }else{
 		      $(this).removeClass('fa-square').addClass('fa-check-square selecionado');
-		      creditos+=parseFloat(all_unidades[id_unidadDidactica].creditos);
+		      creditos+=parseFloat(cursos_escuela[id_unidadDidactica].creditos);
 		      cursos_selecionados.push(id_unidadDidactica);
 		    }
 		  
@@ -105,14 +138,15 @@ console.log(estudiante);
 		});
 		var id_tipo_matricula='';
 		$(document).on('click', '#btn_matricular', function(event) {
-			id_tipo_matricula=$( "select#idTipoMatricula" ).val();
+			id_tipo_matricula=$("select#idTipoMatricula" ).val();
+			console.log(id_tipo_matricula);
 			$.ajax({
 				url: '<?=base_url();?>'+'Matricula/add/',
 				type: 'POST',
 				dataType: 'json',
 				data: {
 					cursos: cursos_selecionados,
-					idSemestreAcademico:plazo_matricula['idSemestreAcademico'],
+					idSemestreAcademico:semestre_academico['idSemestreAcademico'],
 					idEstudiante:estudiante['idEstudiante'],
 					idTipo_Matricula:id_tipo_matricula,
 					observacion:'',

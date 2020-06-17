@@ -91,4 +91,14 @@ class Unidaddidactica_model extends CI_Model
         return $query->result_array();
 
     }
+    function get_unidadesdidacticas_has_idmatricula($idMatricula){
+        $query = $this->db->query("SELECT * FROM unidaddidactica as udi
+            left join unidaddidactica_has_matricula as udima
+            on udi.idUnidadDidactica=udima.idUnidadDidactica
+            left join matricula as ma
+            on ma.idMatricula=udima.idMatricula
+            WHERE ma.idMatricula=".$idMatricula.";");
+        return $query->result_array();
+        
+    }
 }
