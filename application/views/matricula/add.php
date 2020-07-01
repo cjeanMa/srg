@@ -152,9 +152,12 @@ console.log(estudiante);
 					observacion:'',
 
 				},
+
 			})
 			.done(function() {
+
 				console.log("success");
+				window.location="<?=base_url();?>sia/matricula";
 			})
 			.fail(function() {
 				console.log("error");

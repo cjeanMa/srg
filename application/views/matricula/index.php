@@ -11,13 +11,14 @@
     <li class="breadcrumb-item active" aria-current="page">Matricula</li>
   </ol>
 </nav>
-<!-- 
 <div class="card  border-left-<?=$temp_txt;?> form-group">
   <div class="card-body p-2">
     Semestre Academico: <b><?=$semestre_academico['anio'] . '-' . $semestre_academico['periodo'];?></b>
     Matricula del: <b><?=$semestre_academico['fechaInicio'] . ' al ' . $semestre_academico['fechaLimite'];?></b>
   </div>
 </div>
+<!-- 
+
 <h2 class="text-center form-group"><b>Matricula de estudiante</b></h2>
 <div class="form-group d-flex justify-content-center">
 

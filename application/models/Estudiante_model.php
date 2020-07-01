@@ -93,12 +93,23 @@ class Estudiante_model extends CI_Model
      /*
      * Get estudiante y datos de persona by idEstudiante
      */
-    function get_estudiante_persona($idEstudiante)
-    {
-        $this->db->from('estudiante e');
-        $this->db->join('persona p', "e.idPersona=p.idPersona",'left');
-        $this->db->join('escuelaProfesional ep', 'e.idEscuelaProfesional = ep.idEscuelaProfesional','left');
-        return $this->db->get_where('estudiante',array('e.idEstudiante'=>$idEstudiante))->row_array();
+     // Bug idEstudiante
+    // function get_estudiante_persona($idEstudiante)
+    // {
+    //     $this->db->from('estudiante e');
+    //     $this->db->join('persona p', "e.idPersona=p.idPersona",'left');
+    //     $this->db->join('escuelaProfesional ep', 'e.idEscuelaProfesional = ep.idEscuelaProfesional','left');
+    //     return $this->db->get_where('estudiante',array('e.idEstudiante'=>$idEstudiante))->row_array();
+    // }
+    function get_estudiante_persona($idEstudiante){
+        
+        $query = $this->db->query("SELECT * FROM estudiante as e
+        left join persona as p
+        on e.idPersona=p.idPersona
+        LEFT join escuelaprofesional as ep
+        on ep.idEscuelaProfesional=e.idEscuelaProfesional
+        where e.idEstudiante=".$idEstudiante.";");
+       return $query->row_array();
     }
 
 }

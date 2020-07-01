@@ -1,3 +1,4 @@
+
 <?php
 
  
@@ -15,15 +16,41 @@ class Nota extends CI_Controller{
      */
     function index()
     {
-        // $data['permisos'] = $this->Permiso_model->get_all_permisos();
-        $id_persona = $_COOKIE['idPersona'];
-        $id_estudiante = $_COOKIE['idEstudiante'];
-        // $estudiante= $this->Estudiante_model->get_estudiante_persona($id_persona);
-        $matricula=$this->Matricula_model->get_matricula_has_idestudiante($id_estudiante);
+        $data=array();
+        $unidadDidactica=array();
+        $id_persona = @$_COOKIE['idPersona'];
+        $id_docente = @$_COOKIE['idDocente'];
+
+        $temp_unidadDidactica=$this->Nota_model->get_list_unidadD_docente(1);
+
+        foreach ($temp_unidadDidactica as $key => $value) {
+            // $unidadDidactica[$value['idEscuelaProfesional']][]
+            $unidadDidactica[$value['nombreEscuelaProfesional']][]=array(
+                'idEscuelaProfesional'=>$value['idEscuelaProfesional'], 
+                'nombreEscuelaProfesional'=>$value['nombreEscuelaProfesional'],
+                'idUnidadDidactica'=>$value['idUnidadDidactica'],
+                'nombreUnidadDidactica'=>$value['nombreUnidadDidactica'],
+            );
+            
+        }
+        $data['unidadDidactica']=$unidadDidactica;
+        // var_dump($unidadDidactica);
         $data['_view'] = 'nota/index';
-        $data['cursos']=$this->Unidaddidactica_has_matricula_model->get_all_unidaddidactica_has_idmatricula($matricula['idMatricula']);
-        // var_dump($data['cursos']);
-        $this->load->view('layouts/main',$data);
+        $this->load->view('layouts/sia',$data);
+    }
+    function add($idUnidadDodactica){
+        $data=array();
+        $estudiantes=array();
+        $id_persona = @$_COOKIE['idPersona'];
+        $id_docente = @$_COOKIE['idDocente'];
+
+        $estudiantes=$this->Nota_model->get_list_estudiantes_ep(1,$idUnidadDodactica);
+        $data['estudiantes']=$estudiantes;
+        // var_dump($estudiantes);
+        $data['_view'] = 'nota/add';
+        $this->load->view('layouts/sia',$data);
+
+        
     }
 
     // /*

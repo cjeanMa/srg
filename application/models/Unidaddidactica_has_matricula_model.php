@@ -67,7 +67,7 @@ class Unidaddidactica_has_matricula_model extends CI_Model
             ON ud.idSemestre=s.idSemestre 
             LEFT JOIN modulo as m 
             on m.idModulo=ud.idModulo
-            WHERE udm.idEstadoUnidadDidactica = 1
+            WHERE udm.idEstadoUnidadDidactica = 2
             and e.idEstudiante=".$idestduiante."");
 
        return $query->result_array();

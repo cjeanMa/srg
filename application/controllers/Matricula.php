@@ -26,7 +26,7 @@ class Matricula extends CI_Controller{
     {
         $idEstudiante=$_COOKIE["idEstudiante"];
         $idPersona=$_COOKIE["idPersona"];
-
+        // echo $idEstudiante.' - '.$idPersona;
         $semestre_academico=$this->plazo_matricula();
         // $data['state_fecha']=plazo_matricula($semestre_academico);
         // $data['matricula'] = $this->Matricula_model->get_all_matricula();
@@ -40,6 +40,7 @@ class Matricula extends CI_Controller{
         // }else{
         //     echo "tiene matricula";
         // }
+        // var_dump($semestre_academico);
         $data['unidaddidactica_has_matricula']=$get_matricula_semestreacademico;
         $data['_view'] = 'matricula/index';
         $this->load->view('layouts/matricula',$data);
@@ -48,6 +49,7 @@ class Matricula extends CI_Controller{
     /*
      * Adding a new matricula
      */
+
     function add()
     {
         $data['modulos']='';
@@ -58,14 +60,17 @@ class Matricula extends CI_Controller{
         $unidaddidactica_has_matricula_id=array();
         $array_estudiante_curso_escuela_x_semestre=array();
         $id_estudiante=$_COOKIE["idEstudiante"];
+        $idPersona=$_COOKIE["idPersona"];
+        // echo $id_estudiante.' - '.$idPersona;
         $semestre_academico=$this->plazo_matricula();
         $estudiante=$this->Estudiante_model->get_estudiante_persona($id_estudiante);
+        // var_dump($estudiante);
         $tipo_matricula=$this->Tipomatricula_model->get_all_tipomatricula();
         // $plazo_matricula=$this->Plazomatricula_model->get_plazo_matricula();
         $get_matricula_semestreacademico=$this->Matricula_model->get_matricula_has_idestudiante_has_semestre_academico($id_estudiante,$semestre_academico['idSemestreAcademico']);
         // var_dump($get_matricula_semestreacademico);
         if ($semestre_academico['state_plazo_matricula']==false) {
-            redirect('matricula/');
+            redirect('sia/matricula');
         }else{
             if ($get_matricula_semestreacademico==NULL) {
                 $array_estudiante_curso_escuela_x_semestre=$this->make_table_cursos($estudiante);
@@ -78,42 +83,9 @@ class Matricula extends CI_Controller{
         }
         if(isset($_POST) && count($_POST) > 0)     
         {   
-            $params = array(
-				'idSemestreAcademico' => $this->input->post('idSemestreAcademico'),
-				'fechaMatricula' => date('Y/m/d H:i:s'),
-				'observacion' => $this->input->post('observacion'),
-				'idEstudiante' => $this->input->post('idEstudiante'),
-				'idTipoMatricula' => $this->input->post('idTipo_Matricula'),
-            );
             
-            $matricula_id = $this->Matricula_model->add_matricula($params);
-            // var_dump($this->input->post('cursos'));
-            $curso=$this->input->post('cursos');
-            $count = count($curso);
-            if ($matricula_id) {
-                for ($i = 0; $i < $count; $i++) {
-                    $params_curso = array(
-                        'idUnidadDidactica' => $curso[$i],
-                        'idMatricula' => $matricula_id,
-                        'observacion' => '',
-                    );
-                    $unidaddidactica_has_matricula_id[] = $this->Unidaddidactica_has_matricula_model->add_unidaddidactica_has_matricula($params_curso);
-                    // echo $unidaddidactica_has_matricula_id.' - '.$curso[$i];
-                }
-            }
-            if (empty($unidaddidactica_has_matricula_id)) {
-                $this->Unidaddidactica_has_matricula_model->delete_matricula($matricula_id);
-                // echo "borrar matricula";
-            }
-            // var_dump(count($unidaddidactica_has_matricula_id));
-            
-           
-          
-                
-                
-                
-            
-            // redirect('matricula/index');
+            $this->matricular();
+            exit();
         }
         else
         {
@@ -133,6 +105,33 @@ class Matricula extends CI_Controller{
             $this->load->view('layouts/matricula',$data);
         }
     }  
+    function matricular(){
+        $params = array(
+                'idSemestreAcademico' => $this->input->post('idSemestreAcademico'),
+                'fechaMatricula' => date('Y/m/d H:i:s'),
+                'observacion' => $this->input->post('observacion'),
+                'idEstudiante' => $this->input->post('idEstudiante'),
+                'idTipoMatricula' => $this->input->post('idTipo_Matricula'),
+            );
+            
+            $matricula_id = $this->Matricula_model->add_matricula($params);
+            $curso=$this->input->post('cursos');
+            $count = count($curso);
+            if ($matricula_id) {
+                for ($i = 0; $i < $count; $i++) {
+                    $params_curso = array(
+                        'idUnidadDidactica' => $curso[$i],
+                        'idMatricula' => $matricula_id,
+                        'observacion' => '',
+                    );
+                    $unidaddidactica_has_matricula_id[] = $this->Unidaddidactica_has_matricula_model->add_unidaddidactica_has_matricula($params_curso);
+                }
+            }
+            if (empty($unidaddidactica_has_matricula_id)) {
+                $this->Unidaddidactica_has_matricula_model->delete_matricula($matricula_id);
+            }
+            echo json_encode('matriculado');
+    }
 
     /*
      * Editing a matricula
@@ -232,7 +231,9 @@ class Matricula extends CI_Controller{
                 
 
                 $unidades=$this->Unidaddidactica_model->get_unidadesdidacticas_by_modulos_by_semestres_by_escuela($estudiante['idEscuelaProfesional']);
+                // var_dump($unidades);
                 $unidades_aprobadas=$this->Unidaddidactica_has_matricula_model->get_all_unidaddidactica_has_idestudiante($estudiante['idEstudiante']);
+                // var_dump($unidades_aprobadas);
             // merge arrays
                 $unidades_faltantes = array_diff(array_map('json_encode', $unidades), array_map('json_encode', $unidades_aprobadas));
                 $unidades_faltantes = array_map('json_decode', $unidades_faltantes);
