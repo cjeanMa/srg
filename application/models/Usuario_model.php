@@ -53,4 +53,65 @@ class Usuario_model extends CI_Model
     {
         return $this->db->delete('usuario',array('idUsuario'=>$idUsuario));
     }
+    public function login($username,$password){
+        $this->db->where("usuario",$username);
+        $this->db->where("password",$password);
+
+        $result=$this->db->get("usuario");
+        if ($result->num_rows()>0) {
+            return $result->row();
+        }else{
+            return false;
+        }
+    }
+    function get_login( $user = null, $password = null ){
+        $data = null;
+        $loginResponse = null;
+        $loginResponse = $this->db->query("SELECT * FROM usuario 
+            WHERE usuario = ?  
+            AND password = ? 
+            AND idPermiso=2;",array($user,$password))->row_array();
+        
+        if ( empty($loginResponse) ) {
+            $loginResponse = $this->db->query("SELECT * FROM usuario 
+            WHERE usuario = ?  
+            AND password = ? 
+            AND idPermiso=1;;",array($user,$password))->row_array();
+            if (!empty($loginResponse)) {
+                $data["response"] = "success";
+                $data["message"] = "Login Exitoso..!";
+                $data["data"] = array(
+                    "tipo"              => mb_strtolower('cliente'),
+                    "idusuario"         => $loginResponse['idusuario'],
+                    "nombrecompleto"    => $loginResponse['nombrecompleto'],
+                    "usuario"           => $loginResponse['usuario'],
+                    "dni"               => $loginResponse['dni'],
+                );
+            }else{
+                $data["response"] = "error";
+                $data["message"] = "La cuenta no existe..!";
+                $data["data"] = array(
+                    "tipo"          => null,
+                );
+            }
+        }else{
+            $data["response"] = "success";
+            $data["message"] = "Login Exitoso..!";
+            $data["data"] = array(
+                    "tipo"          => mb_strtolower('admin'),
+                    "idusuario"         => $loginResponse['idusuario'],
+                    "nombrecompleto"    => $loginResponse['nombrecompleto'],
+                    "usuario"           => $loginResponse['usuario'],
+                    "dni"               => $loginResponse['dni'],
+            );
+        }
+        var_dump($data);
+        return $data;
+
+    }
+    public function logout(){
+        $this->session->sess_destroy();
+        redirect(base_url().'login');
+    }
+
 }

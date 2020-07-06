@@ -85,7 +85,7 @@ class Matricula extends CI_Controller{
         {   
             
             $this->matricular();
-            exit();
+            // exit();
         }
         else
         {

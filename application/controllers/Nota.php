@@ -38,19 +38,65 @@ class Nota extends CI_Controller{
         $data['_view'] = 'nota/index';
         $this->load->view('layouts/sia',$data);
     }
-    function add($idUnidadDodactica){
+    function registro($idUnidadDodactica){
         $data=array();
         $estudiantes=array();
         $id_persona = @$_COOKIE['idPersona'];
         $id_docente = @$_COOKIE['idDocente'];
 
         $estudiantes=$this->Nota_model->get_list_estudiantes_ep(1,$idUnidadDodactica);
-        $data['estudiantes']=$estudiantes;
-        // var_dump($estudiantes);
-        $data['_view'] = 'nota/add';
-        $this->load->view('layouts/sia',$data);
-
         
+        if(isset($_POST) && count($_POST) > 0) {
+// $params = array(
+//                 'idSemestreAcademico' => $this->input->post('idSemestreAcademico'),
+//                 'fechaMatricula' => date('Y/m/d H:i:s'),
+//                 'observacion' => $this->input->post('observacion'),
+//                 'idEstudiante' => $this->input->post('idEstudiante'),
+//                 'idTipoMatricula' => $this->input->post('idTipo_Matricula'),
+//             );
+            
+//             $matricula_id = $this->Matricula_model->add_matricula($params);
+//             $curso=$this->input->post('cursos');
+
+            $nota=array_filter($this->input->post('nota'), "strlen") ;
+            $count_nota=count($nota);
+            $count_estudiantes=count($estudiantes);
+            if ($count_nota==$count_estudiantes) {
+               foreach ($nota as $key => $value) {
+                    $status_nota=0;
+                    if ($value>10) {
+                        $status_nota=2;
+                    }else{
+                        $status_nota=3;
+                    }
+                    $params = array(
+                        'nota' => $value,
+                        'idEstadoUnidadDidactica' => $status_nota,
+                    );
+                    $params_where = array(
+                        'idUnidadDidactica' => $idUnidadDodactica,
+                        'idMatricula' => $key,
+                    );
+                    $this->Nota_model->add_nota_unidaddidactica_has_matricula($params_where,$params);
+                    
+                }
+            }else{
+                show_error('Error, cantidad de estudiantes y notas');    
+            }                        
+            // redirect('nota/'.$idUnidadDodactica);
+            
+
+
+
+            // array_filter($values, "strlen")
+
+        }else{
+        // var_dump($estudiantes);
+        $data['estudiantes']=$estudiantes;
+        $data['_view'] = 'nota/add';
+        $data['idUnidadDodactica']=$idUnidadDodactica;
+        $this->load->view('layouts/sia',$data);
+        }
     }
 
     // /*

@@ -4,6 +4,9 @@ class Docente extends CI_Controller{
     function __construct()
     {
         parent::__construct();
+        if (!$this->session->userdata("login")) {
+            redirect(base_url().'login');
+        }
         $this->load->model('Docente_model');
         $this->load->model('Persona_model');
         $this->load->model('Escuelaprofesional_model');

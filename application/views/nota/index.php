@@ -37,7 +37,7 @@
       		html_body+=''+
       			'<tr>'+
 		        	'<td>'+ep.nombreUnidadDidactica+'</td>'+
-		        	'<td class="text-center"><a href="<?=base_url();?>nota/add/'+ep.idUnidadDidactica+'" class=" btn btn-success btn-sm" title="Registrar Notas">Notas</a></td>'+
+		        	'<td class="text-center"><a href="<?=base_url();?>nota/'+ep.idUnidadDidactica+'" class=" btn btn-success btn-sm" title="Registrar Notas">Notas</a></td>'+
 		      	'</tr>';
       	});
 

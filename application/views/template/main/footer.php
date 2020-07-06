@@ -1,5 +1,5 @@
 <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer class="sticky-footer bg-primary text-light">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Instituto de Educaci&oacute;n Superior Tecnol&oacute;gico P&uacute;blico Ilave</span>

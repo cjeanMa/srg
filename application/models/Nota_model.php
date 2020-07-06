@@ -23,7 +23,7 @@ class Nota_model extends CI_Model
         // return $temp;
     }
     function get_list_estudiantes_ep($idDocente,$idUnidadDidactica){
-        $query = $this->db->query("SELECT P.idPersona,E.idEstudiante,P.apellidoPaterno,P.apellidoMaterno,P.nombres,S.letraSexo FROM persona AS P
+        $query = $this->db->query("SELECT P.idPersona,E.idEstudiante,P.apellidoPaterno,P.apellidoMaterno,P.nombres,S.letraSexo, MA.idMatricula,UDM.nota FROM persona AS P
             LEFT JOIN estudiante AS E
             ON E.idPersona=P.idPersona
             left join matricula AS MA
@@ -59,6 +59,11 @@ class Nota_model extends CI_Model
             ON DO.idDocente=ASI.idDocente
             WHERE DO.idDocente=".$idDocente.";");
        return $query->result_array();
+    }
+    function add_nota_unidaddidactica_has_matricula($params_where,$params)
+    {
+        $this->db->where($params_where);
+        return $this->db->update('unidadDidactica_has_matricula',$params);
     }
 
 

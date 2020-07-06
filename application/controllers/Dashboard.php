@@ -5,6 +5,9 @@ class Dashboard extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        if (!$this->session->userdata("login")) {
+            redirect(base_url().'login');
+        }
         $this->load->model('Sexo_model');
         $this->load->model('Discapacidad_model');
         $this->load->model('Semestre_model');
