@@ -140,7 +140,11 @@ return array(
 	'f4v'   =>	array('video/mp4', 'video/x-f4v'),
 	'flv'	=>	'video/x-flv',
 	'webm'	=>	'video/webm',
+<<<<<<< HEAD
 	'aac'   =>	'audio/x-acc',
+=======
+	'aac'   =>	array('audio/x-aac', 'audio/aac'),
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 	'm4u'   =>	'application/vnd.mpegurl',
 	'm3u'   =>	'text/plain',
 	'xspf'  =>	'application/xspf+xml',
@@ -155,7 +159,12 @@ return array(
 	'ics'	=>	'text/calendar',
 	'ical'	=>	'text/calendar',
 	'zsh'	=>	'text/x-scriptzsh',
+<<<<<<< HEAD
 	'7zip'	=>	array('application/x-compressed', 'application/x-zip-compressed', 'application/zip', 'multipart/x-zip'),
+=======
+	'7z'	=>	array('application/x-7z-compressed', 'application/x-compressed', 'application/x-zip-compressed', 'application/zip', 'multipart/x-zip'),
+	'7zip'	=>	array('application/x-7z-compressed', 'application/x-compressed', 'application/x-zip-compressed', 'application/zip', 'multipart/x-zip'),
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 	'cdr'	=>	array('application/cdr', 'application/coreldraw', 'application/x-cdr', 'application/x-coreldraw', 'image/cdr', 'image/x-cdr', 'zz-application/zz-winassoc-cdr'),
 	'wma'	=>	array('audio/x-ms-wma', 'video/x-ms-asf'),
 	'jar'	=>	array('application/java-archive', 'application/x-java-application', 'application/x-jar', 'application/x-compressed'),

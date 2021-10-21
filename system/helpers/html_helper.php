@@ -6,7 +6,11 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +33,13 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+<<<<<<< HEAD
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
+=======
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
@@ -192,7 +201,11 @@ if ( ! function_exists('img'))
 
 		foreach ($src as $k => $v)
 		{
+<<<<<<< HEAD
 			if ($k === 'src' && ! preg_match('#^([a-z]+:)?//#i', $v))
+=======
+			if ($k === 'src' && ! preg_match('#^(data:[a-z,;])|(([a-z]+:)?(?<!data:)//)#i', $v))
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 			{
 				if ($index_page === TRUE)
 				{
@@ -200,7 +213,11 @@ if ( ! function_exists('img'))
 				}
 				else
 				{
+<<<<<<< HEAD
 					$img .= ' src="'.get_instance()->config->slash_item('base_url').$v.'"';
+=======
+					$img .= ' src="'.get_instance()->config->base_url($v).'"';
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 				}
 			}
 			else
@@ -292,7 +309,11 @@ if ( ! function_exists('link_tag'))
 					}
 					else
 					{
+<<<<<<< HEAD
 						$link .= 'href="'.$CI->config->slash_item('base_url').$v.'" ';
+=======
+						$link .= 'href="'.$CI->config->base_url($v).'" ';
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 					}
 				}
 				else
@@ -313,7 +334,11 @@ if ( ! function_exists('link_tag'))
 			}
 			else
 			{
+<<<<<<< HEAD
 				$link .= 'href="'.$CI->config->slash_item('base_url').$href.'" ';
+=======
+				$link .= 'href="'.$CI->config->base_url($href).'" ';
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 			}
 
 			$link .= 'rel="'.$rel.'" type="'.$type.'" ';

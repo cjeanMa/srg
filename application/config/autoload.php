@@ -58,7 +58,11 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
+<<<<<<< HEAD
 $autoload['libraries'] = array('database', 'pagination','session');
+=======
+$autoload['libraries'] = array('database','session','form_validation');
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +93,11 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
+<<<<<<< HEAD
 $autoload['helper'] = array('security','form', 'url', 'utility');
+=======
+$autoload['helper'] = array('url','form');
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 
 /*
 | -------------------------------------------------------------------
@@ -103,7 +111,11 @@ $autoload['helper'] = array('security','form', 'url', 'utility');
 | config files.  Otherwise, leave it blank.
 |
 */
+<<<<<<< HEAD
 $autoload['config'] = array('pagination');
+=======
+$autoload['config'] = array();
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 
 /*
 | -------------------------------------------------------------------

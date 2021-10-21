@@ -1,7 +1,23 @@
 <IfModule mod_rewrite.c>
+<<<<<<< HEAD
     RewriteEngine on
     RewriteCond $1 !^(index\.php|images|assets|robots\.txt)
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php?/$1 [L]
+=======
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+#RewriteRule ^([a-z]+)/?$ $1.php [NC]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html
+#RewriteRule ^([a-z]+)/?$ $1.html [NC]
+
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 </IfModule>

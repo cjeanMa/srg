@@ -6,7 +6,11 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +33,13 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+<<<<<<< HEAD
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
+=======
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  * @link	https://codeigniter.com
  * @since	Version 1.4.1
  * @filesource
@@ -97,7 +106,11 @@ class CI_DB_oci8_driver extends CI_DB {
 	 *
 	 * @var	bool
 	 */
+<<<<<<< HEAD
 	public $limit_used;
+=======
+	public $limit_used = FALSE;
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 
 	// --------------------------------------------------------------------
 
@@ -553,7 +566,11 @@ class CI_DB_oci8_driver extends CI_DB {
 	 * Error
 	 *
 	 * Returns an array containing code and message of the last
+<<<<<<< HEAD
 	 * database error that has occured.
+=======
+	 * database error that has occurred.
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 	 *
 	 * @return	array
 	 */
@@ -685,4 +702,20 @@ class CI_DB_oci8_driver extends CI_DB {
 		oci_close($this->conn_id);
 	}
 
+<<<<<<< HEAD
+=======
+	// --------------------------------------------------------------------
+
+	/**
+	 * We need to reset our $limit_used hack flag, so it doesn't propagate
+	 * to subsequent queries.
+	 *
+	 * @return	void
+	 */
+	protected function _reset_select()
+	{
+		$this->limit_used = FALSE;
+		parent::_reset_select();
+	}
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 }

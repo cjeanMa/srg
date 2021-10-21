@@ -6,7 +6,11 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +33,13 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+<<<<<<< HEAD
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
+=======
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  * @link	https://codeigniter.com
  * @since	Version 1.3.0
  * @filesource
@@ -130,9 +139,15 @@ class CI_DB_postgre_driver extends CI_DB {
 		 */
 		foreach (array('connect_timeout', 'options', 'sslmode', 'service') as $key)
 		{
+<<<<<<< HEAD
 			if (isset($this->$key) && is_string($this->key) && $this->key !== '')
 			{
 				$this->dsn .= $key."='".$this->key."' ";
+=======
+			if (isset($this->$key) && is_string($this->$key) && $this->$key !== '')
+			{
+				$this->dsn .= $key."='".$this->$key."' ";
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 			}
 		}
 
@@ -224,8 +239,13 @@ class CI_DB_postgre_driver extends CI_DB {
 		 * and so we'll have to fall back to running a query in
 		 * order to get it.
 		 */
+<<<<<<< HEAD
 		return isset($pg_version['server'])
 			? $this->data_cache['version'] = $pg_version['server']
+=======
+		return (isset($pg_version['server']) && preg_match('#^(\d+\.\d+)#', $pg_version['server'], $match))
+			? $this->data_cache['version'] = $match[1]
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 			: parent::version();
 	}
 
@@ -299,7 +319,11 @@ class CI_DB_postgre_driver extends CI_DB {
 	// --------------------------------------------------------------------
 
 	/**
+<<<<<<< HEAD
 	 * Platform-dependant string escape
+=======
+	 * Platform-dependent string escape
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 	 *
 	 * @param	string
 	 * @return	string
@@ -354,8 +378,12 @@ class CI_DB_postgre_driver extends CI_DB {
 	 */
 	public function insert_id()
 	{
+<<<<<<< HEAD
 		$v = pg_version($this->conn_id);
 		$v = isset($v['server']) ? $v['server'] : 0; // 'server' key is only available since PosgreSQL 7.4
+=======
+		$v = $this->version();
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 
 		$table	= (func_num_args() > 0) ? func_get_arg(0) : NULL;
 		$column	= (func_num_args() > 1) ? func_get_arg(1) : NULL;
@@ -471,7 +499,11 @@ class CI_DB_postgre_driver extends CI_DB {
 	 * Error
 	 *
 	 * Returns an array containing code and message of the last
+<<<<<<< HEAD
 	 * database error that has occured.
+=======
+	 * database error that has occurred.
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 	 *
 	 * @return	array
 	 */

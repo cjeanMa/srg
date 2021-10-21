@@ -6,7 +6,11 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +33,13 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+<<<<<<< HEAD
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
+=======
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
@@ -51,6 +60,7 @@ class CI_Model {
 	/**
 	 * Class constructor
 	 *
+<<<<<<< HEAD
 	 * @return	void
 	 */
 	public function __construct()
@@ -59,6 +69,12 @@ class CI_Model {
 	}
 
 	// --------------------------------------------------------------------
+=======
+	 * @link	https://github.com/bcit-ci/CodeIgniter/issues/5332
+	 * @return	void
+	 */
+	public function __construct() {}
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 
 	/**
 	 * __get magic

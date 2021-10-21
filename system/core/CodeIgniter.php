@@ -6,7 +6,11 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +33,13 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+<<<<<<< HEAD
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
+=======
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
@@ -55,7 +64,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @var	string
  *
  */
+<<<<<<< HEAD
 	const CI_VERSION = '3.1.3';
+=======
+	const CI_VERSION = '3.1.11';
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 
 /*
  * ------------------------------------------------------
@@ -434,7 +447,11 @@ if ( ! is_php('5.4'))
 		 * ReflectionMethod::isConstructor() is the ONLY reliable check,
 		 * knowing which method will be executed as a constructor.
 		 */
+<<<<<<< HEAD
 		elseif ( ! is_callable(array($class, $method)) && strcasecmp($class, $method) === 0)
+=======
+		elseif ( ! is_callable(array($class, $method)))
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 		{
 			$reflection = new ReflectionMethod($class, $method);
 			if ( ! $reflection->isPublic() OR $reflection->isConstructor())

@@ -6,7 +6,11 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +33,13 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+<<<<<<< HEAD
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
+=======
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
@@ -597,7 +606,11 @@ if ( ! function_exists('form_label'))
 	 *
 	 * @param	string	The text to appear onscreen
 	 * @param	string	The id the label applies to
+<<<<<<< HEAD
 	 * @param	array	Additional attributes
+=======
+	 * @param	mixed	Additional attributes
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 	 * @return	string
 	 */
 	function form_label($label_text = '', $id = '', $attributes = array())
@@ -610,6 +623,7 @@ if ( ! function_exists('form_label'))
 			$label .= ' for="'.$id.'"';
 		}
 
+<<<<<<< HEAD
 		if (is_array($attributes) && count($attributes) > 0)
 		{
 			foreach ($attributes as $key => $val)
@@ -617,6 +631,9 @@ if ( ! function_exists('form_label'))
 				$label .= ' '.$key.'="'.$val.'"';
 			}
 		}
+=======
+		$label .= _attributes_to_string($attributes);
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 
 		return $label.'>'.$label_text.'</label>';
 	}

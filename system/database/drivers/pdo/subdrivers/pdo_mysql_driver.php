@@ -6,7 +6,11 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +33,13 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+<<<<<<< HEAD
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
+=======
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
  * @link	https://codeigniter.com
  * @since	Version 3.0.0
  * @filesource
@@ -167,6 +176,14 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 			empty($this->encrypt['ssl_capath']) OR $ssl[PDO::MYSQL_ATTR_SSL_CAPATH] = $this->encrypt['ssl_capath'];
 			empty($this->encrypt['ssl_cipher']) OR $ssl[PDO::MYSQL_ATTR_SSL_CIPHER] = $this->encrypt['ssl_cipher'];
 
+<<<<<<< HEAD
+=======
+			if (defined('PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT') && isset($this->encrypt['ssl_verify']))
+			{
+				$ssl[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = $this->encrypt['ssl_verify'];
+			}
+
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 			// DO NOT use array_merge() here!
 			// It re-indexes numeric keys and the PDO_MYSQL_ATTR_SSL_* constants are integers.
 			empty($ssl) OR $this->options += $ssl;
@@ -182,7 +199,11 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 		{
 			$message = 'PDO_MYSQL was configured for an SSL connection, but got an unencrypted connection instead!';
 			log_message('error', $message);
+<<<<<<< HEAD
 			return ($this->db->db_debug) ? $this->db->display_error($message, '', TRUE) : FALSE;
+=======
+			return ($this->db_debug) ? $this->display_error($message, '', TRUE) : FALSE;
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 		}
 
 		return $pdo;
@@ -274,7 +295,11 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 	 */
 	protected function _list_tables($prefix_limit = FALSE)
 	{
+<<<<<<< HEAD
 		$sql = 'SHOW TABLES';
+=======
+		$sql = 'SHOW TABLES FROM '.$this->_escape_char.$this->database.$this->_escape_char;
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 
 		if ($prefix_limit === TRUE && $this->dbprefix !== '')
 		{

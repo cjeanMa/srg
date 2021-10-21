@@ -23,7 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+<<<<<<< HEAD
 $config['base_url'] = 'http://localhost/ra';
+=======
+$config['base_url'] = 'http://localhost:8080/registro_academico/';
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +39,11 @@ $config['base_url'] = 'http://localhost/ra';
 | variable so that it is blank.
 |
 */
+<<<<<<< HEAD
 $config['index_page'] = '';
+=======
+$config['index_page'] = 'MainPage';
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 
 /*
 |--------------------------------------------------------------------------
@@ -168,9 +176,12 @@ $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
 | By default CodeIgniter uses search-engine friendly segment based URLs:
 | example.com/who/what/where/
 |
+<<<<<<< HEAD
 | By default CodeIgniter enables access to the $_GET array.  If for some
 | reason you would like to disable it, set 'allow_get_array' to FALSE.
 |
+=======
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 | You can optionally enable standard query string based URLs:
 | example.com?who=me&what=something&where=here
 |
@@ -185,7 +196,10 @@ $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
 | use segment based URLs.
 |
 */
+<<<<<<< HEAD
 $config['allow_get_array'] = TRUE;
+=======
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 $config['enable_query_strings'] = FALSE;
 $config['controller_trigger'] = 'c';
 $config['function_trigger'] = 'm';
@@ -193,6 +207,23 @@ $config['directory_trigger'] = 'd';
 
 /*
 |--------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+| Allow $_GET array
+|--------------------------------------------------------------------------
+|
+| By default CodeIgniter enables access to the $_GET array.  If for some
+| reason you would like to disable it, set 'allow_get_array' to FALSE.
+|
+| WARNING: This feature is DEPRECATED and currently available only
+|          for backwards compatibility purposes!
+|
+*/
+$config['allow_get_array'] = TRUE;
+
+/*
+|--------------------------------------------------------------------------
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 | Error Logging Threshold
 |--------------------------------------------------------------------------
 |
@@ -404,8 +435,13 @@ $config['cookie_httponly'] 	= FALSE;
 | Determines whether to standardize newline characters in input data,
 | meaning to replace \r\n, \r, \n occurrences with the PHP_EOL value.
 |
+<<<<<<< HEAD
 | This is particularly useful for portability between UNIX-based OSes,
 | (usually \n) and Windows (\r\n).
+=======
+| WARNING: This feature is DEPRECATED and currently available only
+|          for backwards compatibility purposes!
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 |
 */
 $config['standardize_newlines'] = FALSE;

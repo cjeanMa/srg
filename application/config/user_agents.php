@@ -61,7 +61,11 @@ $platforms = array(
 $browsers = array(
 	'OPR'			=> 'Opera',
 	'Flock'			=> 'Flock',
+<<<<<<< HEAD
 	'Edge'			=> 'Spartan',
+=======
+	'Edge'			=> 'Edge',
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 	'Chrome'		=> 'Chrome',
 	// Opera 10+ always reports Opera/9.80 and appends Version/<real version> to the user agent string
 	'Opera.*?Version'	=> 'Opera',
@@ -110,6 +114,10 @@ $mobiles = array(
 	// Phones and Manufacturers
 	'motorola'		=> 'Motorola',
 	'nokia'			=> 'Nokia',
+<<<<<<< HEAD
+=======
+	'nexus'			=> 'Nexus',
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 	'palm'			=> 'Palm',
 	'iphone'		=> 'Apple iPhone',
 	'ipad'			=> 'iPad',
@@ -150,6 +158,10 @@ $mobiles = array(
 	'wii'			=> 'Nintendo Wii',
 	'open web'		=> 'Open Web',
 	'openweb'		=> 'OpenWeb',
+<<<<<<< HEAD
+=======
+	'meizu'                 => 'Meizu',
+>>>>>>> 6904bf79103d4f4d7a754f5098b887c2d56f58ad
 
 	// Operating Systems
 	'android'		=> 'Android',
